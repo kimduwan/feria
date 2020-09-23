@@ -7,12 +7,6 @@
 
 기간 : 2020.06.01~2020.07.30  
 
-## DB Modeling
-
- ![](images/image8.png)
- 
- 위 화면은 페리아의 DB 모델링 결과입니다. 총 29개의 테이블로 구성하였습니다. 기본적으로 Foriegn key를 사용하였고 'LIKE' 테이블과 같이 특정 테이블에는 논리적 Foriegn key를 사용하였습니다. 
- 
 ## 프로젝트 주요 내용 
 
  **개발목표**
@@ -31,8 +25,17 @@
 
 ## 상세 프로젝트 내용
 
- **프로젝트 명**  **:**  **페리아** **(Feria)** 
+**프로젝트 명**  **:**  **페리아** **(Feria)** 
  --- 
+
+## DB Modeling
+
+![](images/image8.png)
+ 
+ 위 화면은 페리아의 DB 모델링 결과입니다. 총 29개의 테이블로 구성하였습니다. 기본적으로 Foriegn key를 사용하였고 'LIKE' 테이블과 같이 특정 테이블에는 논리적 Foriegn key를 사용하였습니다. 
+ 
+## 프로젝트 화면 구성
+
  ![](images/image1.png) 
  ![](images/image2.png) ![](images/image3.png) 
 
