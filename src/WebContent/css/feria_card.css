@@ -1,0 +1,578 @@
+@charset "UTF-8";
+/*2020. 07. 07. Kelly*/
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #222;
+}
+
+/*title*/
+.wrapContent {
+    width: 1200px;
+    /*margin: 20px auto 0 auto;*/
+    margin: auto;
+
+    /*background-color: #e65100;*/
+}
+.wrapContent .title_feria {
+    text-align: center;
+}
+.title_feria h2 {
+    font-size: 36px;
+    font-weight: 600;
+    padding: 10px 0 5px 0;
+}
+.title_feria h3 {
+    font-size: 24px;
+    padding: 10px 0;
+    border-bottom: 1px solid #424242;
+}
+/*//title*/
+
+.list_feria {
+    /*width: 1200px;*/
+    /*background-color: #e65100;*/
+}
+.list_feria>ul {
+    margin: 20px auto 0 auto;
+    /*background-color: #e65100;*/
+    width: 1200px;
+}
+
+/*.list_feria .flag_b.flag.feria{
+    margin: none;
+}*/
+
+/*깃발*/
+.list_feria .flag {
+    width: 22px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    left: 9px;
+    top: 0;
+}
+.list_feria .flag::before {
+    text-align: center;
+    line-height: 30px;
+    content: "";
+    width:30px;
+    height:30px;
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    z-index: 1;
+}
+.list_feria .flag.flag_B::before {
+    content: "B";
+    background-color: #e65100;
+}
+.list_feria .flag.flag_S::before {
+    content: "S";
+    background-color: rgb(33, 150, 243);
+}
+.list_feria .flag::after {
+    content: "";
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    top: 30px;
+    left:10px;
+}
+.list_feria .flag.flag_B::after {
+    border-left: 15px solid  #e65100;
+    border-right: 15px solid  #e65100;
+}
+.list_feria .flag.flag_S::after {
+    border-left: 15px solid  rgb(33, 150, 243);
+    border-right: 15px solid  rgb(33, 150, 243);
+}
+/*//깃발*/
+
+/*리스트*/
+.list_feria ul .feria {
+    position: relative;
+    float: left;
+    /*background-color: #424242;*/
+    width: 380px;
+    height: 304px;
+    margin: 5px;
+    color: #eee;
+    text-shadow: 2px 2px 6px gray;
+}
+/*이미지*/
+.list_feria ul .feria .party {
+    float: left;
+    width: 380px;
+    height: 304px;
+}
+
+.list_feria ul .feria a {
+    width: 380px;
+    height: 304px;
+    position: absolute;
+    left: 0; top: 0;
+}
+.list_feria .feria .wrap_image_feria{
+    width: 380px;
+    height: 304px;
+    position: absolute;
+    overflow: hidden;
+    left: 0; top: 0;
+
+}
+.list_feria .party img {
+    width: 380px;
+    height: 304px;
+}
+
+
+.list_feria ul .feria h4 {
+    position: absolute;
+    left: 50px;
+    top: 7px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #eee;
+    text-shadow: 2px 2px 2px #424242;
+    text-align: left;
+
+    white-space : nowrap;
+    width: 240px;
+    text-overflow : ellipsis;
+    overflow: hidden;
+}
+
+.list_feria ul .feria .num_heart {
+    position: absolute;
+    right: 38px;
+    top: 7px;
+    font-size: 16px;
+    color: #eee;
+    text-shadow: 2px 2px 2px #424242;
+
+}
+
+.list_feria .list_image_feria {
+    /* 이미지 크기 * 6 */
+    width: 2280px;
+    height: 304px;
+    position: absolute;
+    left:0;
+    transition: .4s linear;
+    /*cubic-bezier(.53,.13,.72,1.31);*/
+}
+
+.list_feria .btn_prev {
+    position: absolute;
+    left:0;
+    top:140px;
+    background-color: transparent;
+    border: none;
+    width:40px;
+    height:40px;
+    font-size:40px;
+    cursor: pointer;
+    text-shadow: 0 0 10px #222;
+    opacity: 0.2;
+    transition: .2s ease;
+}
+.list_feria .btn_prev:hover .fa-caret-left {
+    /*color:#e65100;*/
+    /*color: rgb(170,184,194);*/
+}
+.list_feria .feria:hover .btn_prev {
+    opacity: 1;
+}
+.list_feria .btn_next {
+    position: absolute;
+    right:0;
+    top:140px;
+    background-color: transparent;
+    border: none;
+    width:40px;
+    height:40px;
+    font-size:40px;
+    cursor: pointer;
+    text-shadow: 0 0 10px #222;
+    opacity: 0.2;
+    transition: .2s ease;
+}
+.list_feria .btn_next:hover .fa-caret-right {
+    /*color:#e65100;
+    color: rgb(170,184,194);*/
+}
+.list_feria .feria:hover .btn_next {
+    opacity: 1;
+}
+
+.list_feria .fa-caret-left, .list_feria .fa-caret-right {
+    color:#fff;
+}
+
+
+.list_feria ul .feria .king {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.list_feria ul .feria .king_name {
+    position: absolute;
+    font-size: 16px;
+    left: 50px;
+    bottom: 17px;
+    color: #eee;
+    text-shadow: 2px 2px 2px #424242;
+}
+
+.list_feria ul .feria .member {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    transition: .3s ease;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.list_feria ul .feria .member1 {
+    right: 10px;
+    bottom: 10px;
+}
+
+.list_feria ul .feria .member2 {
+    right: 28px;
+    bottom: 10px;
+}
+.list_feria ul .feria .member3 {
+    right: 46px;
+    bottom: 10px;
+}
+.list_feria ul .feria .member4 {
+    right: 64px;
+    bottom: 10px;
+}
+.list_feria ul .feria .member5 {
+    right: 82px;
+    bottom: 10px;
+}
+.list_feria ul .feria .list_member:hover .member1 {
+    right: 10px;
+    bottom: 10px;
+}
+.list_feria ul .feria .list_member:hover .member2 {
+    right: 45px;
+    bottom: 10px;
+}
+
+.list_feria ul .feria .list_member:hover .member3 {
+    right: 80px;
+    bottom: 10px;
+}
+
+.list_feria ul .feria .list_member:hover .member4 {
+    right: 115px;
+    bottom: 10px;
+}
+
+.list_feria ul .feria .list_member:hover .member5 {
+    right: 150px;
+    bottom: 10px;
+}
+
+.list_member {
+    position: absolute;
+    height: 60px;
+    width: 380px;
+    right: 0;
+    bottom: 0;
+    transition: .4s ease;
+    /*background-color: #aaaaaa;*/
+
+}
+
+/*그라데이션 */
+.feria:hover .list_member {
+    /* https://cssgradient.io/ */
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.53) 0%, rgba(0, 0, 0, 0.29) 35%, rgba(0,212,255,0) 100%);
+}
+
+.wrap_member_hover:hover {
+
+}
+
+
+/*하트*/
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.feria .btn_heart {
+    display: flex;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    border: 0;
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+svg {
+    cursor: pointer;
+    overflow: visible;
+    width: 60px;
+}
+
+svg #heart {
+    transform-origin: center;
+    animation: animateHeartOut 0.3s linear forwards;
+}
+
+svg #main-circ {
+    transform-origin: 29.5px 29.5px;
+}
+
+
+.checkbox {
+    display: none;
+}
+
+.checkbox:checked + label svg #heart {
+    transform: scale(0.2);
+    fill: #E2264D;
+    animation: animateHeart 0.3s linear forwards 0.25s;
+}
+
+.checkbox:checked + label svg #main-circ {
+    transition: all 2s;
+    animation: animateCircle 0.3s linear forwards;
+    opacity: 1;
+}
+
+.checkbox:checked + label svg #grp1 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp1 #oval1 {
+    transform: scale(0) translate(0, -30px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp1 #oval2 {
+    transform: scale(0) translate(10px, -50px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp2 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp2 #oval1 {
+    transform: scale(0) translate(30px, -15px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp2 #oval2 {
+    transform: scale(0) translate(60px, -15px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp3 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp3 #oval1 {
+    transform: scale(0) translate(30px, 0px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp3 #oval2 {
+    transform: scale(0) translate(60px, 10px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp4 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp4 #oval1 {
+    transform: scale(0) translate(30px, 15px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp4 #oval2 {
+    transform: scale(0) translate(40px, 50px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp5 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp5 #oval1 {
+    transform: scale(0) translate(-10px, 20px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp5 #oval2 {
+    transform: scale(0) translate(-60px, 30px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp6 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp6 #oval1 {
+    transform: scale(0) translate(-30px, 0px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp6 #oval2 {
+    transform: scale(0) translate(-60px, -5px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp7 {
+    opacity: 1;
+    transition: 0.1s all 0.3s;
+}
+
+.checkbox:checked + label svg #grp7 #oval1 {
+    transform: scale(0) translate(-30px, -15px);
+    transform-origin: 0 0 0;
+    transition: 0.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp7 #oval2 {
+    transform: scale(0) translate(-55px, -30px);
+    transform-origin: 0 0 0;
+    transition: 1.5s transform 0.3s;
+}
+
+.checkbox:checked + label svg #grp2 {
+    opacity: 1;
+    transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #grp3 {
+    opacity: 1;
+    transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #grp4 {
+    opacity: 1;
+    transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #grp5 {
+    opacity: 1;
+    transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #grp6 {
+    opacity: 1;
+    transition: 0.1s opacity 0.3s;
+}
+
+.checkbox:checked + label svg #grp7 {
+    opacity: 1;
+    transition: 0.1s opacity 0.3s;
+}
+
+@keyframes animateCircle {
+    40% {
+        transform: scale(10);
+        opacity: 1;
+        fill: #DD4688;
+    }
+    55% {
+        transform: scale(11);
+        opacity: 1;
+        fill: #D46ABF;
+    }
+    65% {
+        transform: scale(12);
+        opacity: 1;
+        fill: #CC8EF5;
+    }
+    75% {
+        transform: scale(13);
+        opacity: 1;
+        fill: transparent;
+        stroke: #CC8EF5;
+        stroke-width: 0.5;
+    }
+    85% {
+        transform: scale(17);
+        opacity: 1;
+        fill: transparent;
+        stroke: #CC8EF5;
+        stroke-width: 0.2;
+    }
+    95% {
+        transform: scale(18);
+        opacity: 1;
+        fill: transparent;
+        stroke: #CC8EF5;
+        stroke-width: 0.1;
+    }
+    100% {
+        transform: scale(19);
+        opacity: 1;
+        fill: transparent;
+        stroke: #CC8EF5;
+        stroke-width: 0;
+    }
+}
+
+@keyframes animateHeart {
+    0% {
+        transform: scale(0.2);
+    }
+    40% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes animateHeartOut {
+    0% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/*//하트*/

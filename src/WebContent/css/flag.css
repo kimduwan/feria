@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/*2020. 07. 08. Owen*/
+
+/*깃발*/
+.flag {
+    width: 22px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    left: 9px;
+    top: 0;
+}
+.flag::before {
+    text-align: center;
+    line-height: 30px;
+    content: "";
+    width:30px;
+    height:30px;
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    z-index: 1;
+}
+.flag.flag_B::before {
+    content: "B";
+    background-color: #e65100;
+}
+.flag.flag_S::before {
+    content: "S";
+    background-color: rgb(33, 150, 243);
+}
+.flag::after {
+    content: "";
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    top: 30px;
+    left:10px;
+}
+.flag.flag_B::after {
+    border-left: 15px solid  #e65100;
+    border-right: 15px solid  #e65100;
+}
+.flag.flag_S::after {
+    border-left: 15px solid  rgb(33, 150, 243);
+    border-right: 15px solid  rgb(33, 150, 243);
+}
+/*//깃발*/

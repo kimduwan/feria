@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="requests">
+	<insert id="insert" parameterType="Request">
+		INSERT INTO requests(req_no, req_state, req_regdate, user1, user2)
+		VALUES(requests_seq.nextval, 'W', systimestamp, #{user1}, #{user2})
+	</insert>
+	
+ 	<select id="selectRequestList" parameterType="PageVO" resultType="Request">
+		SELECT no, name, profileImg, reqState, regDate, r
+		FROM(SELECT no, name, profileImg, reqState, regDate, rownum r
+		FROM(SELECT u.user_no no, u.last_name||u.first_name name, profile_img profileImg, r.req_state reqState, r.req_regdate regDate
+		FROM requests r, users u
+		WHERE r.user1 = u.user_no
+		AND r.user2 = #{no}
+		AND r.req_state = 'W'
+		ORDER BY 1 DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	
+<!-- 	<select id="selectRequestList" parameterType="int" resultType="Request">
+	SELECT u.user_no no, u.last_name||u.first_name name, profile_img profileImg, r.req_state reqState, r.req_regdate regDate
+		FROM requests r, users u
+		WHERE r.user1 = u.user_no
+		AND r.user2 = #{no}
+		AND r.req_state = 'W'
+		ORDER BY 1 DESC
+	</select> -->
+	
+	<select id="selectTotal" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM requests r, users u
+		WHERE r.user1 = u.user_no
+		AND r.user2 = #{user2}
+		AND r.req_state = 'W'
+	</select>
+	
+	<update id="updateAccept" parameterType="Request">
+		UPDATE requests
+		SET req_state = 'Y'
+		WHERE user1 = #{user1} AND user2 = #{user2} AND req_state = 'W'
+	</update>
+	
+	<update id="updateReject" parameterType="Request">
+		UPDATE requests
+		SET req_state = 'N'
+		WHERE user1 = #{user1} AND user2 = #{user2}
+	</update>
+	
+<!-- 	<select id="checkRequest" parameterType="Request" resultType="Request">
+		SELECT req_no, user1, user2, req_state
+		FROM requests
+		WHERE (user1 = #{user1} AND user2 = #{user2}) 
+		OR (user1 = #{user2} AND user2 = #{user1} )
+		AND req_state = 'W'
+	</select> -->
+	
+	<select id="checkRequest" parameterType="Request" resultType="string">
+		SELECT <!-- req_no, user1, user2,  -->req_state
+		FROM requests
+		WHERE (user1 = #{user1} AND user2 = #{user2} AND req_state = 'W') 
+		OR (user1 = #{user2} AND user2 = #{user1} AND req_state = 'W')
+		ORDER BY req_no DESC
+	</select>
+</mapper>

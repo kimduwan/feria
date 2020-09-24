@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd">
+
+	<!-- DataSource(커넥션풀) 설정 -->
+	<jee:jndi-lookup id="dataSource"
+	jndi-name="java:comp/env/oraclexe" />
+	
+	<!-- SqlSessionFactory 설정 -->
+	<!-- ref: 의존성주입 -->
+	<bean id="sqlSessionFactory"
+	p:configLocation="/WEB-INF/mybatis-config.xml"
+	p:dataSource-ref="dataSource"
+	class="org.mybatis.spring.SqlSessionFactoryBean"/>
+	
+	<!-- SqlSessionTemplate 설정 -->
+	<bean id="sqlSession"
+	c:sqlSessionFactory-ref="sqlSessionFactory"
+	class="org.mybatis.spring.SqlSessionTemplate"/>
+	
+	<!-- DAO 설정 -->
+	<!-- 2020.08.07. Kelly - DAO 설정 -->
+	<bean id="alarmsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.AlarmsDAOImpl" />
+	
+	<bean id="allergiesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.AllergiesDAOImpl" />
+		
+	<bean id="BDetailsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BDetailsDAOImpl" />
+		
+	<bean id="bibesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BibesDAOImpl" />
+		
+	<bean id="BIngredientsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BIngredientsDAOImpl" />
+		
+	<bean id="blackListDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BlackListDAOImpl" />
+		
+	<bean id="BMlPricesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BMlPricesDAOImpl" />
+		
+	<bean id="BRepliesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BRepliesDAOImpl" />
+		
+	<bean id="BReviewsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BReviewsDAOImpl" />
+		
+	<bean id="BTypesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.BTypesDAOImpl" />
+		
+	<bean id="cenasDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.CenasDAOImpl" />
+		
+	<bean id="citiesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.CitiesDAOImpl" />
+		
+	<bean id="CNAllergiesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.CNAllergiesDAOImpl" />
+		
+	<bean id="CNDishesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.CNDishesDAOImpl" />
+	
+	<!-- 2020.08.07. 장유정 - DAO 설정 -->
+	<bean id="CTImagesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.CTImagesDAOImpl"/>
+	
+	<bean id="dishesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.DishesDAOImpl"/>
+	
+	<bean id="FDatesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.FDatesDAOImpl"/>
+	
+	<bean id="feriasDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.FeriasDAOImpl"/>
+	
+	<bean id="FImagesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.FImagesDAOImpl"/>
+	
+	<bean id="FParticipationsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.FParticipationsDAOImpl"/>
+	
+	<bean id="FReviewsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.FReviewsDAOImpl"/>
+	
+	<bean id="friendsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.FriendsDAOImpl"/>
+	
+	<bean id="likesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.LikesDAOImpl"/>
+	
+	<bean id="PHeadsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.PHeadsDAOImpl"/>
+	
+	<bean id="pointsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.PointsDAOImpl"/>
+	
+	<bean id="reportsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.ReportsDAOImpl"/>
+	
+	<bean id="requestsDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.RequestsDAOImpl"/>
+	
+	<bean id="sidosDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.SidosDAOImpl"/>
+	
+	<bean id="UBibesDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.UBibesDAOImpl"/>
+	
+	<bean id="usersDAO"
+	p:session-ref="sqlSession"
+	class="com.intime.feria.dao.UsersDAOImpl"/>
+	
+	<!-- Service 설정 -->
+	
+	<!-- 2020-08-09 조현득 수정 -->
+	<bean id="userService"
+	p:usersDAO-ref="usersDAO"
+	p:citiesDAO-ref="citiesDAO"
+	class="com.intime.feria.service.UserServiceImpl"/>
+	
+	<bean id="cenaService"
+	p:cenasDAO-ref="cenasDAO"
+	p:CNAllergiesDAO-ref="CNAllergiesDAO"
+	p:CNDishesDAO-ref="CNDishesDAO"
+	p:dishesDAO-ref="dishesDAO"
+	class="com.intime.feria.service.CenaServiceImpl" />
+	
+	<bean id="feriaService"
+	p:fDatesDAO-ref="FDatesDAO"
+	p:feriasDAO-ref="feriasDAO"
+	p:fImagesDAO-ref="FImagesDAO"
+	p:fParticipationsDAO-ref="FParticipationsDAO"
+	p:pHeadsDAO-ref="PHeadsDAO"
+	p:ctImagesDAO-ref="CTImagesDAO"
+	p:citiesDAO-ref="citiesDAO"
+	p:dishesDAO-ref="dishesDAO"
+	p:likesDAO-ref="likesDAO"
+	class="com.intime.feria.service.FeriaServiceImpl"/>
+	
+	<bean id="friendService"
+	p:friendsDAO-ref="friendsDAO"
+	p:requestsDAO-ref="requestsDAO"
+	p:usersDAO-ref="usersDAO"
+	class="com.intime.feria.service.FriendServiceImpl"/>
+	
+	<bean id="blackListService"
+	p:blackListDAO-ref="blackListDAO"
+	class="com.intime.feria.service.BlackListServiceImpl"/>
+	
+	<bean id="bibeService"
+	p:bibesDAO-ref="bibesDAO"
+	p:bTypesDAO-ref="BTypesDAO"
+	p:bIngredientsDAO-ref="BIngredientsDAO"
+	p:bMlPricesDAO-ref="BMlPricesDAO"
+	p:bDetailsDAO-ref="BDetailsDAO"
+	class="com.intime.feria.service.BibeServiceImpl"/>
+	
+	<bean id="BReviewService"
+	p:bReviewsDAO-ref="BReviewsDAO"
+	class="com.intime.feria.service.BReviewServiceImpl"/>
+	
+	<bean id="UBibesService"
+	p:uBibesDAO-ref="UBibesDAO"
+	class="com.intime.feria.service.UBibeServiceImpl"/>
+	
+	<bean id="BReplyService"
+	p:bRepliesDAO-ref="BRepliesDAO"
+	class="com.intime.feria.service.BReplyServiceImpl"/>
+	
+	<bean id="likesService"
+	p:likesDAO-ref="likesDAO"
+	class="com.intime.feria.service.LikeServiceImpl"/>
+	
+	<bean id="PHeadService"
+	p:headsDAO-ref="PHeadsDAO"
+	class="com.intime.feria.service.PHeadServiceImpl"/>
+	
+	<!-- 2020-08-13 서비스 박상훈 -->
+	<bean id="fReviewService"
+	p:fReviewsDAO-ref="FReviewsDAO"
+	class="com.intime.feria.service.FReviewServiceImpl"/>
+	
+</beans>

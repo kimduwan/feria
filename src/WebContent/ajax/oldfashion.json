@@ -1,0 +1,8 @@
+[
+  {"title": "메콩","img": "img/mekhong.jpg", "percent" : 85},
+  {"title": "심플시럽","img": "img/simplesyrup.jpg", "percent" : 10},
+  {"title": "앙고스투라 비터","img": "img/angorastura.jpg", "percent" : 2},
+  {"title": "오렌지 비터","img": "img/angosturaOrangeBitters.jpg", "percent" : 1},
+  {"title": "초콜릿 비터","img": "img/chocolatebitter.jpg", "percent" : 1},
+  {"title": "레몬 필","img": "img/lemon.jpg", "percent" : 1}
+]

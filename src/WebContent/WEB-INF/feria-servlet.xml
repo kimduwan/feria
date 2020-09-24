@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<!-- 2020.08.07. 장유정(기본세팅) -->
+	<mvc:annotation-driven />
+
+	<!-- JSPView의 경로중 /WEB-INF/view/와 .jsp 중복방지를 도와줌 -->
+	<mvc:view-resolvers>
+		<mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp" />
+	</mvc:view-resolvers>
+
+	<!-- Controller 등록 -->
+	<bean
+	p:cenaService-ref="cenaService"
+	class="com.intime.feria.controller.CenaController"/>
+	
+	<bean
+	p:feriaService-ref="feriaService"
+	p:friendService-ref="friendService"
+	class="com.intime.feria.controller.FeriaController"/>
+	
+	<bean
+	p:service-ref="userService"
+	class="com.intime.feria.controller.UserController"/>
+	
+	<bean
+	p:userService-ref="userService"
+	p:blackListService-ref="blackListService"
+	p:friendsService-ref="friendService"
+	p:bibeService-ref="bibeService"
+	p:pHeadService-ref="PHeadService"
+	p:fReviewService-ref="fReviewService"
+	p:feriaService-ref="feriaService"
+	class="com.intime.feria.controller.MyPageController"/>
+	
+	<bean id="bibeController"
+	p:bibeService-ref="bibeService"
+	p:bReviewService-ref="BReviewService"
+	p:bReplyService-ref="BReplyService"
+	p:uBibeService-ref="UBibesService"
+	class="com.intime.feria.controller.BibeController"/>
+
+	<!-- 2020.08.08 이원희 -->
+	<!-- bibeService 추가 -->
+	<!-- 2020-08-09 조현득 수정 -->
+	<!-- 2020.08.10 userService, sidosDAO 주입추가 -->
+	<bean
+	p:bReplyService-ref="BReplyService"
+	p:bReviewService-ref="BReviewService"
+	p:likeService-ref="likesService"
+	p:uBibeService-ref="UBibesService"
+	p:bibeService-ref="bibeService"
+	p:userService-ref="userService"
+	p:sidosDAO-ref="sidosDAO"
+	p:friendService-ref="friendService"
+	p:feriaService-ref="feriaService"
+	p:fReviewService-ref="fReviewService"
+	class="com.intime.feria.controller.AjaxController"/>
+	
+	<!-- MultipartResovler -->
+	<bean id="multipartResolver"
+	p:defaultEncoding="UTF-8"
+	p:maxUploadSize="104857600"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+</beans>

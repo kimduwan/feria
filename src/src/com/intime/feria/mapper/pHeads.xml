@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pHeads">
+	
+	<select id="selectList" resultType="PHead" parameterType="int">
+		SELECT fd.fdate_no fDateNo, fp.prtc_no prtcNo, rownum,
+		       ph.user_no userNo, u.profile_img profileImg
+		FROM f_dates fd, f_participation fp, p_head ph, users u
+		WHERE fd.fdate_no = fp.fdate_no AND
+      fp.prtc_no = ph.prtc_no AND
+      ph.user_no = u.user_no AND fd.fdate_no = #{no}
+      ORDER BY ph.prtc_no ASC
+	</select>
+	
+	<!-- 2020.08.10. Kelly -->
+	<select id="selectListUserNo" parameterType="int" resultType="PHead">
+	<![CDATA[
+			SELECT p.prtc_cnt_no prtcCntNo, c.cena_img cenaImg, f.feria_name feriaName, fd.feria_date feriaDate, p.prtc_open prtcOpen, f.lat lat, f.lng lng,  c.cena_name cenaName, c.cena_type cenaType
+		FROM p_heads p, f_participations fp, f_dates fd, ferias f, cenas c
+		WHERE p.user_no = #{userNo}
+		AND fd.feria_confirm = 'O'
+		AND p.prtc_no = fp.prtc_no
+		AND fp.fdate_no = fd.fdate_no
+		AND fd.feria_no = f.feria_no
+		AND c.cena_no = f.cena_no
+		AND f.user_no <> #{userNo}
+		]]>
+	</select>
+	
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dishes">
+
+		<!-- 2020-07-29 -->
+		<select id="selectDishNoCheck" parameterType="String" resultType="int">
+			SELECT cook_no cookNo
+			FROM dishes
+			WHERE cook_name = #{cookName}
+		</select>
+		
+		<select id="selectDishCheck" parameterType="String" resultType="Dish">
+			SELECT cook_no cookNo, cook_name cookName
+			FROM dishes
+			WHERE cook_name = #{cookName}
+		</select>
+		
+		<select id="selectDish" resultType="int">
+			SELECT dishes_seq.currval
+			FROM dual
+		</select>
+		<!-- 0813 김우석 추가 -->
+		<insert id="insert" parameterType="Dish">
+			<selectKey order="BEFORE" resultType="int" keyProperty="cookNo">
+				select dishes_seq.nextval
+				from dual
+			</selectKey>
+			INSERT INTO dishes(cook_no, cook_name)
+			VALUES(#{cookNo}, #{cookName})
+		</insert>
+<!-- 		
+		<insert id="insert" parameterType="String">
+			INSERT INTO dishes(cook_no, cook_name)
+			VALUES(dishes_seq.nextval, #{cookName})
+		</insert> -->
+		
+		<select id="selectList" resultType="Dish">
+			SELECT cook_no cookNO, cook_name cookName
+			FROM dishes
+			ORDER BY 2
+		</select>
+		
+</mapper>

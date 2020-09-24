@@ -1,0 +1,22 @@
+[
+  {"no": 1,"title": "참이슬 후레쉬","ABV": "47","manufacturer": "하이트 진로","sweet": 56,
+    "carbonate": 25,"weight": 40,"img": "img/bibe1.jpg","discover": "hyungyeon123",
+    "grade": 10
+  },
+  {"no": 2,"title": "참이슬 후레쉬","ABV": "47","manufacturer": "하이트 진로","sweet": 90,
+    "carbonate": 30,"weight": 20,"img": "img/bibe1.jpg","discover": "hyungyeon123",
+    "grade": 10
+  },
+  {"no": 3,"title": "참이슬 후레쉬","ABV": "47","manufacturer": "하이트 진로","sweet": 0,
+    "carbonate": 0,"weight": 100,"img": "img/bibe1.jpg","discover": "hyungyeon123",
+    "grade": 10
+  },
+  {"no": 4,"title": "참이슬 후레쉬","ABV": "47","manufacturer": "하이트 진로","sweet": 70,
+    "carbonate": 50,"weight": 60,"img": "img/bibe1.jpg","discover": "hyungyeon123",
+    "grade": 10
+  },
+  {"no": 5,"title": "참이슬 후레쉬","ABV": "47","manufacturer": "하이트 진로","sweet": 35,
+    "carbonate": 27,"weight": 45,"img": "img/bibe1.jpg","discover": "hyungyeon123",
+    "grade": 10
+  }
+]

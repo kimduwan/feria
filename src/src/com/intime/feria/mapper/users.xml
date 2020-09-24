@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	
+	<select id="selectLogin" resultType="User" parameterType="User">
+		SELECT user_no no,email,first_name firstName, last_name lastName,
+		pwd,birth,phone_num phoneNum,profile_img profileImg,profile_cmt profileCMT,
+		join_date joinDate, user_lv userLV, sido_no sidoNo, gugun_no gugunNo
+		FROM users
+		WHERE email = #{email}
+		AND pwd = #{pwd}
+	</select>
+	
+	<select id="selectUserList" resultType="User">
+		SELECT user_no no, email, first_name firstName, last_name lastName, profile_img profileImg
+		FROM users
+		ORDER BY 1
+	</select>
+	
+	<select id="selectOne" resultType="int" parameterType="string">
+		SELECT user_no no
+		FROM users
+		WHERE email = #{email}
+	</select>
+	
+	<select id="selectTotalInvited" parameterType="int">
+		SELECT COUNT(prtcCntNo)
+		FROM(SELECT no, feriaName, cenaImg, cenaType, feriaDate, feriaConfirm, prtcOpen, prtcCntNo, rownum r
+			 FROM(SELECT u.user_no no, f.feria_name feriaName, c.cena_img cenaImg, c.cena_type cenaType, fd.feria_date feriaDate, fd.feria_confirm feriaConfirm, p.prtc_open prtcOpen, p.prtc_cnt_no prtcCntNo
+			 	 FROM users u, ferias f, cenas c, f_dates fd, p_heads p
+			 	 WHERE u.user_no = f.user_no AND f.user_no = c.user_no AND f.feria_no = fd.feria_no AND p.user_no = u.user_no
+			 	 ORDER BY 5 DESC))
+	</select>
+	
+	<update id="updateMypageFeriaPrivate" parameterType="User">
+		UPDATE p_heads
+		SET prtc_open = (SELECT DECODE(prtc_open,'Y','N','Y') 
+						 FROM p_heads 
+						 WHERE prtc_cnt_no = #{prtcCntNo})
+		WHERE  prtc_cnt_no = #{prtcCntNo}
+	</update>
+	
+	<!-- model1 박상훈 -->
+	<select id="selectMypageFeriaList" resultType="User" parameterType="PageVO">
+		SELECT userNo, prtcOpen, feriaDate, feriaConfirm, feriaName, cenaType, cenaImg, r
+		FROM(SELECT userNo, prtcOpen, feriaDate, feriaConfirm, feriaName, cenaType, cenaImg, rownum r
+			FROM(SELECT p.user_no userNo, p.prtc_open prtcOpen, fd.feria_date feriaDate, fd.feria_confirm feriaConfirm, f.feria_name feriaName, c.cena_type cenaType, c.cena_img cenaImg
+				FROM p_heads p, f_participations fp, f_dates fd, ferias f, cenas c
+				WHERE p.user_no = #{no}
+				AND p.prtc_no = fp.prtc_no
+				AND fp.fdate_no = fd.fdate_no
+				AND fd.feria_no = f.feria_no
+				AND f.cena_no = c.cena_no
+				ORDER BY 3 DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="selectCheckEmail" resultType="int" parameterType="String">
+		SELECT COUNT(email)
+		FROM users
+		WHERE email = #{email}
+	</select>
+	
+	<insert id="joinInsert" parameterType="User">
+		INSERT INTO users(user_no, email, first_name, last_name, pwd, birth, phone_num, profile_img, profile_cmt, join_date, user_lv, sido_no, gugun_no)
+		VALUES(999, #{email}, #{firstName}, #{lastName}, #{pwd}, #{birth}, #{phoneNum}, 'default.jpg', '반갑습니다.', systimestamp, 'B', #{sidoNo}, #{gugunNo})
+	</insert>
+	
+	<!-- model1 박상훈 -->
+	<!-- 지난페리아의 pagination을 위한 total값 -->
+	<select id="selectTotal" resultType="int" parameterType="int" >
+		SELECT COUNT(userNo)
+		FROM(SELECT userNo, prtcOpen, feriaDate, feriaConfirm, feriaName, cenaType, cenaImg, rownum r
+			FROM(SELECT p.user_no userNo, p.prtc_open prtcOpen, fd.feria_date feriaDate, fd.feria_confirm feriaConfirm, f.feria_name feriaName, c.cena_type cenaType, c.cena_img cenaImg
+				FROM p_heads p, f_participations fp, f_dates fd, ferias f, cenas c
+				WHERE p.user_no = #{no}
+				AND p.prtc_no = fp.prtc_no
+				AND fp.fdate_no = fd.fdate_no
+				AND fd.feria_no = f.feria_no
+				AND f.cena_no = c.cena_no
+				ORDER BY 3 DESC))
+	</select>
+	
+	<!-- 2020.08.10. Kelly 수정 -->
+	<!-- 내가 페리아 초대를 한 사람 숫자 구하기 -->
+	<select parameterType="int" resultType="int" id="selectInviteTotal">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM p_heads p, f_participations fp, f_dates fd, ferias f
+		WHERE fd.feria_confirm = 'O'
+		AND p.prtc_no = fp.prtc_no
+		AND fp.fdate_no = fd.fdate_no
+		AND fd.feria_no = f.feria_no
+		AND f.user_no = #{userNo}
+		AND p.user_no <> #{userNo}
+		]]>
+	</select>
+	
+	<!-- 페리아에 초대받은 회수 -->
+	<select parameterType="int" resultType="int" id="selectInvitedTotal">
+		<![CDATA[
+		SELECT COUNT(*)
+		FROM p_heads p, f_participations fp, f_dates fd, ferias f
+		WHERE p.user_no = #{userNo}
+		AND fd.feria_confirm = 'O'
+		AND p.prtc_no = fp.prtc_no
+		AND fp.fdate_no = fd.fdate_no
+		AND fd.feria_no = f.feria_no
+		AND f.user_no <> #{userNo}
+	]]>
+	</select>
+	
+</mapper>

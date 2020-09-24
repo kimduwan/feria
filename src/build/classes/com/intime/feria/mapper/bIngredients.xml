@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bIngredients">
+	
+	<insert id="insert">
+		
+		INSERT INTO B_INGREDIENTS(ing_no,ing_ratio,bibe_ing,bibe_no)
+		VALUES(b_ingredients_seq.nextval,#{ingRatio},#{bibeIng},#{bibeNo})
+		
+	</insert>
+	
+</mapper>

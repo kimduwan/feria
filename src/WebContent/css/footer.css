@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+/* 2020.07.14. Kelly */
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 15px;
+}
+
+#wrapFooter {
+    display:block;
+    width: 1200px;
+    height: 370px;
+    background-color: rgb(247, 247, 247);
+    margin: 0 auto;
+}
+
+#wrap_sitemap {
+    position: relative;
+    width: 1200px;
+    height: 255px;
+    margin: auto;
+}
+
+#sitemap {
+    width: 1085px;
+    height: 148px;
+    position: absolute;
+    margin: 30px 0 0 80px;
+}
+
+#sitemap .sitemap {
+    float: left;
+    width: 360px;
+}
+
+#sitemap .sitemap .text {
+    margin: 26px 0;
+}
+
+#sitemap .sitemap .dt {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#sitemap .sitemap .dd {
+    color: rgba(66, 66, 66, 0.9);
+}
+
+#wrap_copyright {
+    width: 1045px;
+    height: 114px;
+    line-height: 114px;
+    padding: 0 80px;
+    color: #424242;
+    display: block;
+    margin: auto;
+}
+
+.copy_icon {
+    display: inline-block;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.copy_icon .fab {
+    padding: 0 5px;
+}
+
+.copy_icon a, .sitemap a {
+    color: #424242;
+}
+
+.copy_icon .fab:hover {
+    color: #e65100;
+}
+
+.top_line {
+    border-top: 1px solid rgba(66, 66, 66, 0.6);
+}

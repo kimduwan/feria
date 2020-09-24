@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cities">
+
+	<select id="selectGugun" resultType="City" parameterType="int">
+		SELECT city_no cityNo, city_name cityName
+		FROM cities
+		WHERE upper_city = #{cityNo}
+	</select>
+
+	<select id="selectSi" resultType="City">
+		SELECT city_no cityNo, city_name cityName
+		FROM cities
+		WHERE upper_city IS NULL
+		ORDER BY 2
+	</select>
+	
+	<!-- 2020.08.11 이원희 -->
+	<select id="selectCityNo" resultType="int" parameterType="String">
+		SELECT s.city_no cityNo
+		FROM cities m, cities s
+		WHERE m.city_no = s.upper_city
+		AND m.city_name||' '||s.city_name LIKE #{cityName}
+	</select>
+	
+</mapper>

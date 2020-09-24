@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/*2020. 07. 08. Kelly*/
+
+.allergy_check{
+    display: none;
+}
+
+.allergy_check+label{
+    border:3px solid #fff;
+    border-radius: 16px;
+    padding:6px 9px;
+    cursor: pointer;
+    display:inline-block;
+    margin:5px 2.5px;
+    width: 54.75px;
+    height: 78.75px;
+    background-size: 450px 300px;
+    background-image: url("../img/allergy_sprite.jpg");
+}
+.allergy_check:checked+label{
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+    color:#fff;
+    border: 3px solid #e65100;
+}
+
+#allergy1+label{
+    background-position: 0 0;
+}
+#allergy2+label{
+    background-position: -75px 0;
+}
+#allergy3+label{
+    background-position: -150px 0;
+}
+#allergy4+label{
+    background-position: -223.5px 0;
+}
+#allergy5+label{
+    background-position: -295.5px 0;
+}
+#allergy6+label{
+    background-position: -369.75px 0;
+}
+#allergy7+label{
+    background-position: 0 -94.5px;
+}
+#allergy8+label{
+    background-position: -75px -94.5px;
+}
+#allergy9+label{
+    background-position: -150px -94.5px;
+}
+#allergy10+label{
+    background-position: -225px -94.5px;
+}
+#allergy11+label{
+    background-position: -294.75px -94.5px;
+}
+#allergy12+label{
+    width: 60px;
+    background-position: -367.5px -94.5px;
+}
+.wrap_input_allergy{
+    /*margin-top: 150px;*/
+}
+.wrap_input_allergy h4{
+    margin-bottom: 10px;
+}
+.allergy_img{
+    width: 500px;
+    height: 400px;
+    margin-left: 15px;
+}

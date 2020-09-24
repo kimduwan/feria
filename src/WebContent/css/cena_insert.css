@@ -1,0 +1,433 @@
+@charset "UTF-8";
+
+/*2020.07.12. Kelly*/
+
+#insertCena {
+    margin: 80px auto;
+    width: 1000px;
+    height: 800px;
+    /*background-color: rgba(240, 248, 255, 0.93);*/
+    position: relative;
+}
+
+#insertCena .insert_cena_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500px;
+    /*background-color: rgba(210, 117, 117, 0.26);*/
+}
+
+.insert_cena_left .title_cena {
+	
+    width: 456px;
+    height: 40px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 22px;
+    padding: 0 10px;
+}
+
+.insert_cena_left.not .title_cena {
+    border: 1.5px solid #e65100;
+    border-radius: 5px;
+}
+
+.insert_cena_left .plus_image_cena {
+    border-radius: 5px;
+    cursor: pointer;
+    width: 480px;
+    height: 480px;
+    border: 1.5px solid #e65100;
+    text-align: center;
+    line-height: 480px;
+    font-size: 100px;
+    color: #eee;
+    margin-top: 24px;
+
+}
+
+.insert_cena_left .plus_image_cena #cenaOkImg {
+    width: 480px;
+    height: 480px;
+    border-radius: 5px;
+
+}
+
+.insert_cena_right {
+    width: 500px;
+    position: absolute;
+    left: 500px;
+    top: 0;
+    /*background-color: #CC8EF5;*/
+}
+
+.insert_cena_right .cena_kategorie_food {
+    height: 45px;
+    line-height: 45px;
+    margin-left: 15px;
+}
+
+.insert_cena_right .cena_kategorie_food input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    border-radius: 5px;
+    /*margin-left: 20px;*/
+}
+
+.insert_cena_right .cena_kategorie_food label {
+    background-color: #fff;
+    border: 1px solid #424242;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+
+.insert_cena_right .wrap_input_allergy {
+    position: absolute;
+    left: 0;
+    top: 70px;
+    margin: 0;
+}
+
+.insert_cena_right h4 {
+    font-size: 24px;
+    /*margin-left: 20px;*/
+}
+
+.insert_cena_right .host_msg {
+    position: absolute;
+    left: 0;
+    top: 440px;
+
+}
+
+.insert_cena_right #hostMsg {
+    width: 460px;
+    height: 55px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #424242;
+    margin-top: 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+
+    /* textarea 사이즈 조정 불가 */
+    resize: none;
+}
+
+.insert_cena_right .host_msg.not #hostMsg {
+    border: 1.5px solid #e65100;
+}
+
+.insert_cena_bottom {
+    position: absolute;
+    left: 0;
+    top: 600px;
+    width: 1000px;
+    height: 120px;
+    /*background-color: rgba(133, 149, 163, 0.66);*/
+
+}
+
+.insert_cena_bottom h4 {
+	widht:80px;
+    font-size: 22px;
+}
+
+.insert_cena_bottom .kind_cena {
+    /*background-color: #CC8EF5;*/
+    height: 80px;
+    float: left;
+}
+
+.kind_check {
+    display: none;
+}
+
+.insert_cena_bottom .kind_check + label {
+    background-color: #fff;
+    border: 1px solid #424242;
+    padding: 10px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.insert_cena_bottom #bs:checked + label {
+    color: #fff;
+    border-color: #e65100;
+    background-color: #e65100;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.insert_cena_bottom #ss:checked + label {
+    color: #fff;
+    border-color: #2196F3;
+    background-color: #2196F3;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.insert_cena_bottom .food_tags {
+    float: left;
+    height: 80px;
+    margin-left: 30px;
+    width: 740px;
+    white-space: nowrap;
+    
+}
+.insert_cena_bottom .food_tags::after {
+	content: "";    
+    display:block;
+    clear:both;
+    
+}
+
+.insert_cena_bottom .food_tags.not #insertTag:first-child {
+    border: 1.5px solid #e65100;
+
+}
+
+/* .plus_tag_food li {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    
+} */
+
+.plus_tag_food li.tag {
+    padding: 10px 12px;
+    border-radius: 100px;
+    border: 1px solid #424242;
+}
+
+.plus_tag_food li.tag button {
+    border: none;
+    background-color: #e65100;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+#insertTag {
+    padding: 8px 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    width: 110px;
+    height: 22px;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.insert_cena_bottom .btn_enrollment {
+
+}
+
+/*등록 버튼*/
+#enrollmentBtn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 40px;
+    line-height:40px;
+    background-color: #e65100;
+    font-size: 20px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#enrollmentBtn:disabled {
+    background-color: #FFCCBC;
+    box-shadow: none;
+}
+
+/*사진 입력*/
+.plus_image_cena {
+    position: relative;
+    overflow: hidden;
+}
+
+.plus_image_cena img {
+    width: 480px;
+    height: 480px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+
+}
+
+.plus_image_cena.ok img {
+    display: block;
+}
+
+.plus_image_cena .btn_remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius:5px;
+    font-size: 30px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0 0 2px #424242;
+    cursor: pointer;
+    display: none;
+}
+
+.plus_image_cena.ok .btn_remove {
+    display: block;
+}
+
+.plus_image_cena .btn_remove:hover {
+    background-color: #e65100;
+}
+
+.plus_image_cena #insertCenaImg {
+    display: none;
+}
+
+.plus_image_cena #insertCenaImg + label {
+    width: 480px;
+    height: 480px;
+    font-size: 80px;
+    text-align: center;
+    background-image: url("img/plus.svg");
+    background-size: 250px;
+    background-repeat: no-repeat;
+    background-position:center;
+    border-radius: 5px;
+    display: block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.msg {
+    color: #e65100;
+}
+
+.star {
+    color: #e65100;
+    font-size: 16px;
+    margin-left: 1.2px;
+}
+
+
+/* 빌려온 설정 */
+#commTagBox{
+}
+
+#commTagBox #putItem{
+	float:left;
+    max-width: 900px;
+    line-height: 30px;
+    margin-top:10px;
+}
+#commTagBox #insertTagBox{
+	position: relative;
+	float:left;
+}
+#commTagBox #insertTagBox #itemList{
+    position: absolute;
+    width: 150px;
+    line-height: 35px;
+    z-index: 10;
+    right:-15px;
+}
+#commTagBox #insertTagBox #itemList li{
+	margin-top: 2px;
+	text-indent:10px;
+	background-color: #fff;
+	border-bottom: 1.5px solid #e65100;
+}
+#commTagBox #insertTagBox #itemList li:hover{
+	background-color: #e65100;
+	border-radius: 5px;
+	color: #fff;
+	cursor: pointer;
+}
+.list_put_tag{
+	min-width: 110px;
+	height: 22px;
+	line-height: 22px;
+	padding: 8px 10px;
+	margin-right:5px;
+	float: left;
+	border: 1.5px solid #e65100;
+	border-radius: 20px;
+	text-align: center;	
+}
+
+.list_put_tag i{
+	cursor: pointer;
+}
+
+
+/* .cena_kategorie_food label:hover{
+	color:#fff;
+} */
+.insert_cena_right .cena_kategorie_food label:checked{
+	text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.cena_kategorie_food .label_K:hover{
+	background-color: #BBDEFB;
+}
+.cena_kategorie_food .label_C:hover{
+	background-color: #D1C4E9;
+	
+}
+.cena_kategorie_food .label_J:hover{
+	background-color: #FFCDD2;
+	
+}
+.cena_kategorie_food .label_A:hover{
+	background-color: #C8E6C9;
+	
+}
+.cena_kategorie_food .label_W:hover{
+	background-color: #D7CCC8;
+	
+}
+.cena_kategorie_food .label_K.on{
+	background-color:#0D47A1;
+	border-color:#0D47A1;
+}
+.cena_kategorie_food .label_C.on{
+	background-color:#4527A0;
+	border-color:#4527A0;
+}
+.cena_kategorie_food .label_J.on{
+	background-color:#C62828;
+	border-color:#C62828;
+}
+.cena_kategorie_food .label_A.on{
+	background-color:#2E7D32;
+	border-color:#2E7D32;
+}
+.cena_kategorie_food .label_W.on{
+	background-color:#4E342E;
+	border-color:#4E342E;
+	
+}
+.on{
+	color:#fff;
+}
+
+
+

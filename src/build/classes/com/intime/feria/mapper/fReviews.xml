@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fReviews">
+	<!-- 2020-08-11 박상훈 : 호스트가 받은 페리아 리뷰 리스트 -->
+	<select id="selectHostsFReviews" resultType="FReview" parameterType="int">
+		SELECT u.last_name lastName, u.first_name firstName, u.user_lv userLv, u.profile_img profileImg, 
+			   fp.prtc_no prtcNo, 
+		       fd.feria_date feriaDate, fd.feria_no feriaNo,
+		       fr.fr_no frNo, fr_text frText, fr.user_no userNo, fr.fr_regdate frRegdate,
+		       fi.fimg fimg
+		FROM f_reviews fr, users u, p_heads p, f_participations fp, f_dates fd, f_images fi
+		WHERE fr.user_no = u.user_no
+		AND u.user_no = p.user_no
+		AND p.prtc_no = fp.prtc_no
+		AND fp.fdate_no = fd.fdate_no
+		AND fr.fr_no = fi.fr_no
+		AND fr.user_no = #{userNo}
+	</select>
+	<!-- 08 11 김우석 추가 -->
+	<insert id="insert" parameterType="FReview">
+		<selectKey order="BEFORE" keyProperty="frNo" resultType="int">
+			select f_reviews_seq.nextval
+			from dual
+		</selectKey>
+		insert into f_reviews(fr_no,fr_text,fr_regdate,user_no,fdate_no)
+		values(#{frNo},#{frText},systimestamp,#{userNo},#{fDateNo})
+	</insert>
+	
+	<!-- 2020-08-13 박상훈 -->
+	<select id="selectReviewTotal" resultType="int" parameterType="int">
+		SELECT COUNT(frNo)
+		FROM(SELECT u.last_name lastName, u.first_name firstName, u.user_lv userLv, u.profile_img profileImg, 
+			   fp.prtc_no prtcNo, 
+		       fd.feria_date feriaDate, fd.feria_no feriaNo,
+		       fr.fr_no frNo, fr_text frText, fr.user_no userNo, fr.fr_regdate frRegdate,
+		       fi.fimg fimg
+		FROM f_reviews fr, users u, p_heads p, f_participations fp, f_dates fd, f_images fi
+		WHERE fr.user_no = u.user_no
+		AND u.user_no = p.user_no
+		AND p.prtc_no = fp.prtc_no
+		AND fp.fdate_no = fd.fdate_no
+		AND fr.fr_no = fi.fr_no
+		AND fr.user_no = #{userNo})
+	</select>
+</mapper>

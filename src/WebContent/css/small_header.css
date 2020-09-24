@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/* 2020. 07. 08. Kelly */
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #222;
+}
+
+#wrapContent{
+    width: 1200px;
+    margin: 100px auto 100px;
+    overflow: auto;
+}
+#wrapContent input{
+    font-weight: 300;
+    font-size: 16px;
+}
+#wrapContent .first_header{
+    font-size: 36px;
+    text-align: center;
+    margin: 10px 0 ;
+}
+#wrapContent .second_header{
+    width: 1000px;
+    margin: 5px auto;
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #222;
+    text-align: center;
+}

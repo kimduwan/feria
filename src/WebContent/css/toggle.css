@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*2020. 07. 09. Owen*/
+
+.slider{
+}
+.slider span{
+    display: inline-block;
+    width: 90px; height: 25px;
+    background-color: #bbb;
+    cursor: pointer;
+    border-radius: 24px;
+    transition: .2s ease;
+    position: relative;
+    color: white;
+}
+.slider .first_value{
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 4px;
+    display: none;
+    font-size: 13px;
+}
+.slider input:checked+span .first_value {
+    display: block;
+}
+.slider .second_value{
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 45px;
+    font-size: 13px;
+}
+.slider input:checked+span .second_value {
+    display: none;
+}
+
+.slider span::before {
+    content: "";
+    position: absolute;
+    width: 40px; height: 17px;
+    background-color: #fff;
+    border-radius: 16px;
+    top: 4px; left: 4px;
+    transition: .2s ease;
+}
+.slider input{
+    display: none;
+}
+.slider input:checked+span{
+    background-color: rgb(33, 150, 243);
+
+}
+
+
+.slider input:checked+span::before{
+    transform: translateX(40px);
+
+}

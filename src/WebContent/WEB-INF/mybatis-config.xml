@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 2020-08-07 장유정(기본세팅) -->
+<!-- 데이터베이스 연결 환경설정 -->
+<configuration>
+	
+	<!-- NULL값이 들어갈 수 있도록 세팅 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<!-- typeAlias 설정 -->
+	<typeAliases>
+ 		<typeAlias alias="Alarm" type="com.intime.feria.vo.Alarm"/>
+ 		<typeAlias alias="Allergy" type="com.intime.feria.vo.Allergy"/>
+ 		<typeAlias alias="BDetail" type="com.intime.feria.vo.BDetail"/>
+ 		<typeAlias alias="Bibe" type="com.intime.feria.vo.Bibe"/>
+ 		<typeAlias alias="BIngredient" type="com.intime.feria.vo.BIngredient"/>
+ 		<typeAlias alias="Black" type="com.intime.feria.vo.Black"/>
+ 		<typeAlias alias="BMlPrice" type="com.intime.feria.vo.BMlPrice"/>
+ 		<typeAlias alias="BReply" type="com.intime.feria.vo.BReply"/>
+ 		<typeAlias alias="BReview" type="com.intime.feria.vo.BReview"/>
+ 		<typeAlias alias="BType" type="com.intime.feria.vo.BType"/>
+ 		<typeAlias alias="Cena" type="com.intime.feria.vo.Cena"/>
+ 		<typeAlias alias="City" type="com.intime.feria.vo.City"/>
+ 		<typeAlias alias="CNAllergy" type="com.intime.feria.vo.CNAllergy"/>
+ 		<typeAlias alias="CNDish" type="com.intime.feria.vo.CNDish"/>
+ 		<typeAlias alias="CTImage" type="com.intime.feria.vo.CTImage"/>
+ 		<typeAlias alias="Dish" type="com.intime.feria.vo.Dish"/>
+ 		<typeAlias alias="FDate" type="com.intime.feria.vo.FDate"/>
+ 		<typeAlias alias="Feria" type="com.intime.feria.vo.Feria"/>
+ 		<typeAlias alias="FImage" type="com.intime.feria.vo.FImage"/>
+ 		<typeAlias alias="FParticipation" type="com.intime.feria.vo.FParticipation"/>
+ 		<typeAlias alias="FReview" type="com.intime.feria.vo.FReview"/>
+ 		<typeAlias alias="Friend" type="com.intime.feria.vo.Friend"/>
+ 		<typeAlias alias="Like" type="com.intime.feria.vo.Like"/>
+ 		<typeAlias alias="PHead" type="com.intime.feria.vo.PHead"/>
+ 		<typeAlias alias="Point" type="com.intime.feria.vo.Point"/>
+ 		<typeAlias alias="Report" type="com.intime.feria.vo.Report"/>
+ 		<typeAlias alias="Request" type="com.intime.feria.vo.Request"/>
+ 		<typeAlias alias="UBibe" type="com.intime.feria.vo.UBibe"/>
+ 		<typeAlias alias="User" type="com.intime.feria.vo.User"/>
+ 		<typeAlias alias="Sido" type="com.intime.feria.vo.Sido"/>
+ 		<typeAlias alias="Gugun" type="com.intime.feria.vo.Gugun"/>
+ 		<typeAlias alias="PageVO" type="com.intime.feria.vo.PageVO"/>
+	</typeAliases>
+
+	<!-- 맵퍼파일의 경로 설정 -->
+	<mappers>
+		<mapper resource="com/intime/feria/mapper/alarms.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/allergies.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bDetails.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bibes.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bIngredients.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/blackList.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bMlPrices.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bReplies.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bReviews.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/bTypes.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/cenas.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/cities.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/cNAllergies.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/cNDishes.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/ctImages.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/dishes.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/fDates.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/ferias.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/fImages.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/fParticipations.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/fReviews.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/friends.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/likes.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/pHeads.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/points.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/reports.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/requests.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/ubibes.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/users.xml"></mapper>
+		<mapper resource="com/intime/feria/mapper/sidos.xml"></mapper>
+	</mappers>
+</configuration>

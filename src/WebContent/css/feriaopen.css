@@ -1,0 +1,419 @@
+@charset "UTF-8";
+
+/*폰트*/
+body{font-family: 'Noto Sans KR', sans-serif;}
+
+/* 컨텐트박스 기본*/
+#wrapContent{
+    width: 1200px;
+    margin:  100px auto;
+    overflow: auto;
+    position: relative;
+    min-height: 500px;
+}
+#wrapContent::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#wrapContent input{
+    border-radius: 5px;
+}
+#wrapContent .first_header{
+    font-size: 36px;
+    text-align: center;
+    margin: 10px 0 ;
+}
+#wrapContent .second_header{
+    margin-top: 5px;
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #424242;
+    text-align: center;
+}
+
+/*폼 박스*/
+.feria_open_formbox{
+    width: 1000px;
+    min-height: 500px;
+    margin: 50px auto;
+}
+.wrap_500px{
+    width: 500px;
+    min-height: 500px;
+    float: left;
+}
+.wrap_500px.left{
+}
+/*이름 입력*/
+.wrap_feria_name input{
+    width: 448px;
+}
+/*인원 입력*/
+.wrap_feria_headCount::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.wrap_feria_headCount h3{
+    width: 50px;
+    float: left;
+}
+.wrap_feria_headCount div{
+    text-align: left;
+    height: 44px;
+    line-height: 44px;
+    width: 120px;
+    float: left;
+}
+.wrap_feria_headCount div input{
+    font-size: 16px;
+    padding: 4px 10px;
+}
+#minHeadCount,
+#maxHeadCount{
+    width: 90px;
+}
+/*아침,점심,저녁 선택*/
+.feria_time{
+    height: 44px;
+    position: relative;
+}
+.feria_time::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.feria_time h3,
+.feria_time div{
+    float: left;
+}
+.feria_time h3{
+    font-size: 20px;
+    width: 50px;
+    height: 44px;
+    line-height: 32px;
+}
+.feria_time_input input{
+    position: absolute;
+    top: 4px;
+    left: 245px;
+}
+/*주소*/
+.feria_address{
+}
+.feria_address div input{
+    width: 448px;
+}
+/*일시*/
+.feria_date{
+    position: relative;
+}
+.feria_date::after{
+    content:"" ;
+    display: block;
+    clear: both;
+}
+.feria_date h3,
+.feria_date .datepicker_input{
+    float: left;
+}
+.feria_date .datepicker_input{
+    position: absolute;
+    top: 8px;
+    left: 50px;
+}
+.feria_date .tui-calendar td{
+    vertical-align: middle;
+}
+.btn_repeat{
+    position: absolute;
+    top: 7px;
+    left: 230px;
+}
+.feria_date h3{
+    width: 50px;
+}
+.date_range_output{
+    float: left;
+    width: 450px;
+}
+.date_range_output div,
+.date_range_output span{
+    float: left;
+    display: block;
+    line-height: 44px;
+    height: 44px;
+
+}
+.date_range_start{
+    width: 85px;
+}
+.date_range_end{
+    width: 85px;
+}
+/*알림*/
+.wrap_feria_alarm h3,
+.feria_alarm{
+    float: left;
+}
+.wrap_feria_alarm h3{
+    width: 50px;
+}
+
+.feria_alarm{
+    width: 450px;
+}
+/*라디오 버튼 css*/
+.btn_filter{
+    display: none;
+}
+.btn_filter+label{
+    border:1px solid #424242;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor: pointer;
+    display:inline-block;
+    margin:5px 2.5px;
+}
+.btn_filter+label.on{
+    background: #E65100;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    color:#fff;
+}
+/*완료 버튼*/
+.btn_next.btn{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 40px;
+}
+/*공통 설정*/
+.btn{
+    border: none;
+    background-color: #e65100;
+    color: #fff;
+    font-weight: 200;
+    cursor: pointer;
+    border-radius: 5px;
+    font: 300 16px "Noto Sans KR", sans-serif;
+    padding: 3px 10px;
+}
+#wrapContent input{
+    font: 300 16px "Noto Sans KR", sans-serif;
+    padding: 4px 10px;
+    border: 1px solid #424242;
+}
+#wrapContent h3{
+    font-size: 18px;
+    height: 44px;
+    line-height: 44px;
+}
+.row.full{
+    width: 500px;
+    margin: 20px 0 ;
+}
+.sub_row{
+    margin-bottom: 5px;
+}
+
+/*반복 팝업*/
+#wrapRepeat{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(158,158,158,0.75);
+    display: none;
+    z-index: 1;
+}
+
+#wrapRepeat>div{
+    position: absolute;
+    width: 550px;
+    height: 250px;
+    left: 50%;
+    top: 50%;
+    margin-top: -125px;
+    margin-left: -300px;
+    background-color: #fff;
+    border: 1px solid #424242;
+}
+#wrapRepeat .wrap_repeat{
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -250px;
+    background-color: #fff;
+}
+
+#wrapRepeat h3{
+    width: 500px;
+    height: 44px;
+    line-height: 44px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #cccccc;
+}
+.wrap_repeat_cycle{
+    width: 500px;
+    margin: 10px 0;
+}
+.wrap_repeat_cycle::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#wrapRepeat h4{
+    float: left;
+    width: 50px;
+    height: 44px;
+    line-height: 44px;
+}
+.repeat_cycle{
+    float: left;
+    width: 450px;
+}
+.wrap_date_range .date_range{
+    float: left;
+    width: 450px;
+    height: 44px;
+    position: relative;
+}
+.date_range>div:first-child{
+    position: absolute;
+    top: 8px;
+}
+.date_range>div:last-child{
+    position: absolute;
+    top: 8px;
+    left: 200px;
+}
+.date_range>span{
+    position: absolute;
+    top: 14px;
+    left: 180px;
+}
+.date_range .tui-datepicker-input.tui-datetime-input.tui-has-focus{
+    z-index: 10;
+}
+.date_range .tui-datepicker.tui-is-selectable.tui-is-selected,
+.tui-datepicker.tui-rangepicker.tui-is-selectable.tui-is-selected{
+    background-color: #E65100;
+}
+
+#wrapRepeat .btn_confirm{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #E65100;
+    border: 1px solid #E65100;
+    border-radius: 5px;
+    color: #fff;
+    z-index: 5;
+}
+#wrapRepeat .btn_close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/delete.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    background-color: #fff;
+    z-index: 5;
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+}
+.tui-datepicker-input.tui-datetime-input.tui-has-focus{
+    border: none;
+}
+.btn_delete_repeat{
+    position: absolute;
+    top: 7px;
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/delete.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+
+.wrap_time_list{
+    position: absolute;
+    left: 600px;
+    top: 400px;
+    width: 500px;
+    min-height: 200px;
+
+}
+
+.wrap_time_list li{
+    width: 500px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.wrap_time_list li .wrap_date_item{
+    width: 400px;
+}
+
+.wrap_time_list li h4{
+    width: 50px;
+    height: 33px;
+    font-size: 15px;
+    float: left;
+    border: 1px solid #424242;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.wrap_time_list li .open_date {
+    width: 170px;
+    height: 33px;
+    float: left;
+    border: 1px solid #424242;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.wrap_time_list li .open_time{
+    width: 130px;
+    height: 33px;
+    float: left;
+    border: 1px solid #424242;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.wrap_time_list li .btn_delete{
+    position: absolute;
+    right: 80px;
+    top: 1.5px;
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/delete.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}

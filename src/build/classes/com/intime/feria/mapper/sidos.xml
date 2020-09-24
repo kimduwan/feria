@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sidos">
+
+	<!-- Sido Insert : 셀렉트키를 통해 값을 얻어와야 함 -->
+	<insert id="insertSido" parameterType="Sido">
+	<selectKey order="BEFORE" resultType="int" keyProperty="sidoCd">
+			SELECT cities_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO cities(city_no, city_name, upper_city)
+		VALUES(#{sidoCd}, #{name}, null)
+	</insert>
+	
+	<!-- Gugun Insert -->
+	<insert id="insertGugun" parameterType="Gugun">
+		INSERT INTO cities(city_no, city_name, upper_city)
+		VALUES(cities_seq.nextval, #{name}, #{sidoCd})
+	</insert>
+	
+</mapper>

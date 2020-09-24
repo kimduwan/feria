@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ferias">
+
+	<select id="selectList" resultType="Feria"
+		parameterType="PageVO">
+		SELECT feria_no feriaNo,feria_name feriaName,
+		u.user_no,u.last_name||u.first_name hostName,
+		u.profile_img profileImg,
+		c.cena_type cenaType
+		FROM ferias f,users u,cenas c
+		WHERE f.user_no =
+		u.user_no AND
+		f.user_no = c.user_no AND
+		f.cena_no = c.cena_no AND
+		feria_no BETWEEN #{start} AND #{end}
+		ORDER BY 1 DESC
+	</select>
+
+	<select id="selectListByFeria" resultType="Feria"
+		parameterType="PageVO">
+		SELECT cenaImg,
+		cenaType,maxCount,feriaNo,mealType,fdateNo,feriaDate,feriaConfirm
+		FROM(SELECT cenaImg,
+		cenaType,maxCount,feriaNo,mealType,fdateNo,feriaDate,feriaConfirm,rownum
+		r
+		FROM(SELECT c.cena_img cenaImg, c.cena_type cenaType,f.max_count-1
+		maxCount,f.feria_no feriaNo,f.meal_type mealType,fd.fdate_no
+		fdateNo,fd.feria_date feriaDate,fd.feria_confirm feriaConfirm
+		FROM
+		ferias f,cenas c,f_dates fd
+		WHERE f.cena_no=c.cena_no
+		AND f.feria_no =
+		fd.feria_no
+		AND fd.feria_confirm = 'O'))
+		WHERE r BETWEEN #{start} AND
+		#{end}
+	</select>
+	<!--selectListByFeria 08-07 : 오후 11:44 노수한 -->
+
+
+	<select id="selectTotal" resultType="int">
+		SELECT count(*)
+		FROM ferias
+	</select>
+	<!--selectListByFeria 08-08 : 오전 2:18 노수한 -->
+
+	<!-- 2020.08.11 이원희 -->
+	<insert id="insert" parameterType="Feria">
+		<selectKey keyProperty="feriaNo" resultType="int"
+			order="BEFORE">
+			SELECT ferias_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO ferias(feria_no, feria_name, postcode, feria_address,
+		detail_address,lat,lng,min_count,max_count,meal_type,meal_time,feria_regdate,user_no,cena_no,city_no)
+		VALUES(#{feriaNo},#{feriaName},#{postcode},#{feriaAddress},#{detailAddress},#{lat},#{lng},#{minCount},#{maxCount},#{mealType},#{mealTime},systimestamp,#{userNo},#{cenaNo},#{cityNo})
+	</insert>
+
+
+	<select id="selectHostsFeiraList" resultType="Feria"
+		parameterType="PageVO">
+		SELECT feriaNo, userNo, feriaName, feriaDate, cenaImg,
+		cenaType
+		FROM(SELECT feriaNo, userNo, feriaName, feriaDate, cenaImg,
+		cenaType, rownum r
+		FROM(SELECT f.feria_no feriaNo, f.user_no userNo,
+		f.feria_name feriaName,
+		fd.feria_date feriaDate, c.cena_img cenaImg,
+		c.cena_type cenaType
+		FROM ferias f, f_dates fd, cenas c
+		WHERE f.feria_no
+		= fd.feria_no
+		AND f.cena_no = c.cena_no
+		AND f.user_no = #{userNo}
+		ORDER
+		BY 4 DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+
+	<!-- 2020-08-11 박상훈 -->
+	<select id="selectHostsFeriaTotal" resultType="int"
+		parameterType="int">
+		SELECT COUNT(f.feria_no)
+		FROM ferias f, f_dates fd, cenas
+		c
+		WHERE f.feria_no = fd.feria_no
+		AND f.cena_no = c.cena_no
+		AND f.user_no
+		= #{userNo}
+	</select>
+
+	
+
+</mapper>

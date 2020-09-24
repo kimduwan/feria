@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bMlPrices">
+	
+	<insert id="insert" parameterType="BMlPrice">
+		INSERT INTO b_mlprice(mlprice_no,bibe_ml,bibe_price,bibe_no)
+		VALUES (b_mlprice_seq.nextval,#{bibeMl},#{bibePrice},#{bibeNo})
+	</insert>
+	
+</mapper>

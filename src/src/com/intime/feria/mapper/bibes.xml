@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bibes">
+
+	<select id="selectSearch" resultType="Bibe"
+		parameterType="String">
+		SELECT bibe_no bibeNo, bibe_name bibeName,bibe_img
+		bibeImg, bType_no bTypeNo
+		FROM bibes
+		WHERE bibe_name LIKE #{bibeName}
+	</select>
+
+	<insert id="bibeInsert" parameterType="Bibe">
+		<selectKey keyProperty="bibeNo" resultType="int"
+			order="BEFORE">
+			SELECT bibes_seq.nextval
+			FROM dual
+		</selectKey>
+		INSERT INTO
+		bibes(bibe_no,bibe_img,bibe_name,bibe_detail,bibe_regdate,last_modified,user_no,btype_no)
+		VALUES
+		(#{bibeNo},#{bibeImg},#{bibeName},#{bibeDetail},systimestamp,null,#{userNo},#{bTypeNo})
+	</insert>
+
+	<select id="selectList" resultType="Bibe" parameterType="PageVO">
+		SELECT
+		bibeNo, bibeName,bibeImg,userNo,profileImg,firstName,lastName
+		FROM(SELECT bibeNo,
+		bibeName,bibeImg,userNo,profileImg,firstName,lastName,rownum r
+		FROM(SELECT b.bibe_no bibeNo,b.bibe_name bibeName,b.bibe_img
+		bibeImg,b.user_no userNo,u.profile_img profileImg,u.first_name
+		firstName,u.last_name lastName
+		FROM bibes b,users u
+		WHERE
+		b.user_no=u.user_no))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	<!-- 노수한 0809 4시 -->
+
+	<select id="selectTotal" resultType="int">
+		SELECT count(*)
+		FROM bibes
+	</select>
+
+	<!-- 2020.08.10. Kelly 수정 - 유저가 Like한 비베 리스트 가져오기 -->
+	<!-- 유저 LIKES 비베 타입 값얻어오기 -->
+	<select parameterType="int" resultType="Bibe" id="selectBtype">
+		SELECT
+		b.bibe_no bibeNo, b.bibe_name bibeName,b.bibe_img bibeImg ,b.btype_no
+		btypeNo, bibe_avb bibeAvb, bibe_brand bibeBrand, bibe_ml bibeMl,
+		bibe_price bibePrice,l.user_no userNo
+		FROM likes l, bibes b, b_details
+		bd, b_mlprice bm
+		WHERE b.bibe_no = l.type_no
+		AND b.bibe_no =
+		bd.bibe_no(+)
+		AND b.bibe_no = bm.bibe_no(+)
+		AND l.user_no = #{userNo}
+		AND likes_type = 'B'
+	</select>
+
+	<!-- 2020.08.10. Kelly - 유저가 Like한 비베 하나의 정보 가져오기 -->
+	<!-- Like Bibe 하나 가져오기 -->
+	<select parameterType="int" resultType="Bibe"
+		id="selectOneLikeBibe">
+		SELECT b.bibe_no bibeNo, b.bibe_name bibeName, d.bibe_avb bibeAvb,
+		d.bibe_brand bibeBrand, m.bibe_ml bibeMl, m.bibe_price bibePrice
+		FROM
+		bibes b, b_details d, b_mlprice m
+		WHERE b.bibe_no = d.bibe_no
+		AND b.bibe_no = m.bibe_no
+		AND b.bibe_no = #{bibeNo}
+	</select>
+
+	<!-- Cocktail Bibe 하나 가져오기 -->
+	<select parameterType="int" resultType="Bibe"
+		id="selectOneLikeCocktail">
+		SELECT b.bibe_no bibeNo, b.bibe_name bibeName ,i.bibe_ing bibeIng,
+		i.bibe_no iBibeNo
+		FROM bibes b, b_ingredients i
+		WHERE b.bibe_no =
+		i.bibe_ing
+		AND i.bibe_no = #{bibeNo}
+	</select>
+
+	<select id="selectHostBibeVal" resultType="Bibe"
+		parameterType="Bibe">
+		SELECT bibeNo, bibeName, bibeImg, bibePrice, COUNT(*)
+		bibeCnt
+		FROM(SELECT b.bibe_no bibeNo, fd.feria_date feriaDate,
+		ub.bibe_cnt bibeCnt, b.bibe_name bibeName, b.bibe_img bibeImg,
+		bibe_price bibePrice
+		FROM ferias f, f_dates fd, f_participations fp, p_heads p, u_bibes ub,
+		bibes b, b_details bd, b_mlprice bm
+		WHERE f.feria_no = fd.feria_no
+		AND fd.fdate_no = fp.fdate_no
+		AND fp.prtc_no = p.prtc_no
+		AND p.prtc_cnt_no = ub.prtc_cnt_no
+		AND ub.bibe_no = b.bibe_no
+		AND b.bibe_no = bd.bibe_no
+		AND bd.bibe_no = bm.bibe_no
+		AND f.user_no = #{userNo})
+		GROUP BY bibeNo, bibeName, bibeImg, bibePrice
+		ORDER BY ${val} DESC
+	</select>
+
+	<select id="selectHostsBibeDefault" resultType="Bibe"
+		parameterType="Bibe">
+		SELECT f.user_no no, fd.feria_date feriaDate,
+		ub.bibe_cnt bibeCnt, b.bibe_name bibeName, b.bibe_img bibeImg,
+		bibe_price bibePrice
+		FROM ferias f, f_dates fd, f_participations fp,
+		p_heads p, u_bibes ub, bibes b, b_details bd, b_mlprice bm
+		WHERE
+		f.feria_no = fd.feria_no
+		AND fd.fdate_no = fp.fdate_no
+		AND fp.prtc_no =
+		p.prtc_no
+		AND p.prtc_cnt_no = ub.prtc_cnt_no
+		AND ub.bibe_no = b.bibe_no
+		AND b.bibe_no = bd.bibe_no
+		AND bd.bibe_no = bm.bibe_no
+		AND f.user_no =
+		#{userNo}
+		ORDER BY ${val} DESC, 4 ASC
+	</select>
+
+
+	<select id="selectListByBibeCummu" resultType="Bibe"
+		parameterType="PageVO">
+
+		SELECT
+		bibeNo,bibeName,bibeImg,userNo,profileImg,firstName,lastName,bibeAvb,bibeBrand,btypeName
+		FROM(SELECT
+		bibeNo,bibeName,bibeImg,userNo,profileImg,firstName,lastName,bibeAvb,bibeBrand,btypeName,rownum
+		r
+		FROM(SELECT b.bibe_no bibeNo,b.bibe_name bibeName,b.bibe_img bibeImg,
+		b.user_no userNo,u.profile_img profileImg,u.first_name
+		firstName,u.last_name
+		lastName,
+		NVL(bd.bibe_avb,0)
+		bibeAvb,NVL(bd.bibe_brand,'　') bibeBrand,btype_name btypeName
+		FROM
+		bibes b,users u,b_details bd,b_types bt
+		WHERE b.user_no=u.user_no
+		AND
+		b.bibe_no=bd.bibe_no(+)
+		AND bt.btype_no=b.btype_no))
+		WHERE r BETWEEN
+		#{start} AND #{end}
+		ORDER BY 1 DESC
+
+	</select>
+</mapper>

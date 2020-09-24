@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'LotteMartDream';
+    src: local('LotteMartDreamMedium'),
+        url('../webfonts/12LotteMartDreamMedium.woff2') format('woff2'),
+        url('../webfonts/12LotteMartDreamMedium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LotteMartDream';
+    src: local('LotteMartDreamLight'),
+        url('../webfonts/12LotteMartDreamLight.woff2') format('woff2'),
+        url('../webfonts/12LotteMartDreamLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LotteMartDream';
+    src: local('LotteMartDreamBold'),
+        url('../webfonts/12LotteMartDreamBold.woff2') format('woff2'),
+        url('../webfonts/12LotteMartDreamBold.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fImages">
+	<select id="selectList" resultType="FImage" parameterType="int">
+		SELECT fi.fimg_no fImgNo,fi.fimg fImg,fi.fr_no frNo,
+		fd.fdate_no fDateNo
+		FROM f_images fi,f_reviews fr,f_dates fd
+		WHERE fi.fr_no =
+		fr.fr_no AND
+		fr.fdate_no = fd.fdate_no AND fd.fdate_no = #{no}
+		ORDER BY 1 DESC
+	</select>
+	<!-- 2020 0810 김우석 추가 -->
+	<insert id="insert" parameterType="FImage">
+		insert into
+		f_images(fimg_no,fimg,fr_no)
+		values(f_images_seq.nextval,#{fImg},#{frNo})
+	</insert>
+
+	<select id="selectFeriaComm" resultType="FImage" parameterType="PageVO">
+		SELECT
+		fImg,fdateNo,userNo,feriaName,profileImg,r
+		FROM(SELECT fImg,fdateNo, userNo, feriaName, profileImg, rownum r
+		FROM(SELECT i.fimg fImg,
+		d.fdate_no fdateNo, r.user_no userNo, f.feria_name
+		feriaName,
+		u.profile_img profileImg
+		FROM f_dates d, f_reviews r,
+		f_images i, ferias f, users u
+		WHERE r.fdate_no = d.fdate_no
+		AND i.fr_no
+		= r.fr_no
+		AND f.feria_no = d.feria_no
+		AND r.user_no = u.user_no))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+</mapper>

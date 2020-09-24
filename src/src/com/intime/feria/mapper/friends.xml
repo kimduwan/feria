@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="friends">
+	<select id="selectFriendList" parameterType="PageVO" resultType="Friend">
+		SELECT no, name, profileImg, r
+		FROM(SELECT no, name, profileImg, rownum r
+		FROM(SELECT u.user_no no, u.last_name||u.first_name name, u.profile_img profileImg
+				FROM(SELECT DECODE(user1,#{no},user2,user1) user_no
+				FROM friends
+				WHERE (user1 = #{no} OR user2 = #{no})) f, users u
+				WHERE f.user_no = u.user_no
+				ORDER BY 2))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="friendList" parameterType="int" resultType="Friend">
+		SELECT u.user_no no, u.last_name||u.first_name name, u.profile_img profileImg
+		FROM(SELECT DECODE(user1,#{no},user2,user1) user_no
+		    FROM friends
+		    WHERE (user1 = #{no} OR user2 = #{no})) f, users u
+		WHERE f.user_no = u.user_no
+		ORDER BY 2
+	</select>
+	
+<!-- 	<select id="selectFriendList" parameterType="int" resultType="Friend">
+		SELECT u.user_no no, u.last_name||u.first_name name, u.profile_img profileImg
+		FROM(SELECT DECODE(user1,#{userNo},user2,user1) user_no
+		FROM friends
+		WHERE (user1 = #{userNo} OR user2 = #{userNo})) f, users u
+		WHERE f.user_no = u.user_no
+		ORDER BY 2
+	</select> -->
+	
+	<insert id="insertFriend" parameterType="Friend">
+		INSERT INTO friends(friend_no, user1, user2)
+		VALUES(friends_seq.nextval, #{user1}, #{user2})
+	</insert>
+	
+	<delete id="deleteFriend" parameterType="Friend">
+		DELETE FROM friends
+		WHERE (user1 = #{user1} AND user2 = #{user2})
+		OR (user1 = #{user2} AND user2 = #{user1})
+	</delete>
+	
+	<select id="selectTotal" parameterType="int" resultType="int">
+		select COUNT(*)
+		from friends
+		where user1 = #{no} or user2 = #{no}
+	</select>
+	
+<!-- 	<select id="findFriend">
+		SELECT * 
+		FROM friends
+		WHERE (user1 = #{user1} AND user2 = #{user2})
+		OR (user1 = 1 AND user2 = 51)
+	</select> -->
+	
+	<select id="checkFriend" parameterType="Friend" resultType="Friend">
+		SELECT friend_no, user1, user2
+		FROM friends
+		WHERE (user1 = #{user1} AND user2 = #{user2})
+		OR (user1 = #{user2} AND user2 = #{user1})
+	</select>
+	
+	
+	
+</mapper>

@@ -1,0 +1,38 @@
+/* 행복체 */
+@font-face {
+    font-family: 'LotteMartHappy';
+    font-style: normal; font-weight: 400;
+    src: local('LotteMartHappyMedium'),
+            url(../webfonts/LotteMartHappyMedium.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'LotteMartHappy'; font-style: normal; font-weight: 700;
+    src: local('LotteMartHappyBold'),
+            url(../webfonts/LotteMartHappyBold.woff) format('woff');
+}
+.lottemarthappy * { font-family: 'LotteMartHappy', sans-serif; }
+
+/* 드림체 */
+@font-face {
+    font-family: 'LotteMartDream'; font-style: normal;
+    font-weight: 300;
+    src: local('LotteMartDreamLight'),
+    url(../webfonts/LotteMartDreamLight.woff) format('woff');
+}
+@font-face {
+    font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 400;
+    src:local('LotteMartDreamMedium'),
+    url(../webfonts/LotteMartDreamMedium.woff) format('woff');
+}
+@font-face { font-family: 'LotteMartDream';
+    font-style: normal;
+    font-weight: 700;
+    src: local('LotteMartDreamBold'),
+    url(../webfonts/LotteMartDreamBold.woff) format('woff');
+}
+.lottemartdream * {
+    font-family: 'LotteMartDream', sans-serif;
+}

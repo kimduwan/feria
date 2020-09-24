@@ -1,0 +1,34 @@
+[
+  {"no": 1,"title": "참이슬 후레쉬","ABV": "16.9","manufacturer": "하이트 진로","sweet": 56,
+    "carbonate": 25,"weight": 40,"img": "/술1.jpg","discover": "skadus",
+    "grade": 10, "profile":"/38.jpg", "like":"1567", "flag":"true", "type":"소주"
+  },
+  {"no": 2,"title": "짐빔","ABV": "80","manufacturer": "빔 주식회사","sweet": 90,
+    "carbonate": 30,"weight": 20,"img": "/술2.jpg","discover": "airbig01",
+    "grade": 10, "profile":"/37.jpg", "like":"852", "flag":"false", "type":"양주"
+  },
+  {"no": 3,"title": "칭따오","ABV": "4.7","manufacturer": "칭다오 맥주 유한공사","sweet": 0,
+    "carbonate": 0,"weight": 100,"img": "/술3.jpg","discover": "borntowin85",
+    "grade": 10, "profile":"/36.jpg", "like":"677", "flag":"true", "type":"맥주"
+  },
+  {"no": 4,"title": "아마레또","ABV": "28","manufacturer": "Disaronno","sweet": 70,
+    "carbonate": 50,"weight": 32,"img": "/섹스온더비치.jpeg","discover": "leemj00",
+    "grade": 10, "profile":"/35.jpg", "like":"561", "flag":"false", "type":"양주"
+  },
+  {"no": 5,"title": "이강주","ABV": "25","manufacturer": "전주 이강주","sweet": 25,
+    "carbonate": 37,"weight": 64,"img": "/몬테그리1.jpg","discover": "forever94",
+    "grade": 10, "profile":"/34.jpg", "like":"457", "flag":"true", "type":"전통주"
+  },
+  {"no": 5,"title": "감홍로","ABV": "40","manufacturer": "농업회사법인(주) 감홍로","sweet": 35,
+    "carbonate": 60,"weight": 84,"img": "/비베1.jpg","discover": "towin85",
+    "grade": 10, "profile":"/33.jpg", "like":"446", "flag":"false", "type":"전통주"
+  },
+  {"no": 7,"title": "문배술","ABV": "40","manufacturer": "문배주 양조원","sweet": 65,
+    "carbonate": 11,"weight": 45,"img": "/bibe31.jpg","discover": "rever500",
+    "grade": 10, "profile":"/32.jpg", "like":"218", "flag":"false", "type":"전통주"
+  },
+  {"no": 8,"title": "테라","ABV": "4.6","manufacturer": "하이트 진로","sweet": 15,
+    "carbonate": 29,"weight": 70,"img": "/bibe32.jpg","discover": "jouemj00",
+    "grade": 10, "profile":"/31.jpg", "like":"98", "flag":"false", "type":"맥주"
+  }
+]

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>친구추가</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/notosanskr.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="icon" href="img/logo.jpg">
+    <style>
+        /*폰트*/
+        body{font-family: 'Noto Sans KR', sans-serif;}
+
+        .wrap_content{
+            margin: auto;
+            width: 1200px;
+        }
+
+        /*header 영역*/
+        #wrapHeader{
+            width: 1200px;
+            height: 122px;
+            margin: auto;
+            border-bottom: solid 1px #aaaaaa;
+        }
+        #wrapHeader::after{
+            content: "";
+            clear: both;
+        }
+        #wrapHeader h1{
+            float: left;
+            padding: 10px 0 0 10px;
+        }
+        #wrapHeader h1 a{
+            display: block;
+            width: 100px; height: 100px;
+            background: url(img/logo.jpg) no-repeat left top;
+            background-size: 100px;
+            text-indent: -5000px;
+        }
+        #wrapMenu{
+            float: right;
+            margin: 46.5px 20px 0 0;
+        }
+        #wrapMenu ul {
+            text-align: center;
+        }
+        #wrapMenu ul::before{
+            content: "";
+            clear: both;
+        }
+        #wrapMenu ul li{
+            float: left;
+            margin-left: 20px;
+
+        }
+        #wrapMenu ul li .btn_menu::after, #wrapMenu ul li .btn_menu::before{
+            content: "";
+            width: 0;
+            height:2px;
+
+            position: absolute;
+            bottom: 0;
+            background-color: #222;
+
+            transition: .2s ease;
+
+        }
+        #wrapMenu ul li .btn_menu::before{
+            left: 50%;
+        }
+        #wrapMenu ul li .btn_menu::after{
+            right: 50%;
+        }
+        #wrapMenu ul li .btn_menu:hover::before{
+            transform: scaleX(1);
+            width: 50%;
+        }
+        #wrapMenu ul li .btn_menu:hover::after{
+            transform: scaleX(1);
+            width: 50%;
+        }
+        #wrapHeader #wrapMenu ul li a{
+            position:relative;
+            text-decoration: none;
+            color: #222222;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        #wrapHeader #wrapMenu .btn_alarm{
+            display: block;
+            font-size: 22px;
+        }
+        #wrapHeader #wrapMenu .btn_account{
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            width: 150px;
+            height: 30px;
+            border-radius: 20px;
+            position: relative;
+        }
+        #wrapHeader #wrapMenu .btn_account img{
+            display: inline-block;
+            width:  25px;
+            height: 25px;
+            position: absolute;
+            left: 2.5px;
+            top: 2.5px;
+        }
+        #wrapHeader #wrapMenu .btn_account span{
+            display: inline-block;
+            position: absolute;
+            left: 30px;
+        }
+        #wrapHeader #wrapMenu .account_depth::before{
+
+        }
+        #wrapHeader #wrapMenu .account_depth{
+            margin-top: 5px;
+            border: 1px solid #9e9e9e;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        #wrapHeader #wrapMenu .account_depth li{
+            border-bottom: 1px solid #9e9e9e;
+            float: none;
+            width: 75%;
+            height: 25px;
+            margin: auto;
+        }
+        #wrapHeader #wrapMenu .account_depth li:nth-child(4){
+            float: none;
+            border-bottom: none;
+            margin: auto;
+        }
+        #wrapHeader #wrapMenu .account_depth li a{
+            display: block;
+            width: 75%;
+            height: 20px;
+            line-height: 25px;
+            font-size: 14px;
+            margin: auto;
+            text-align: center;
+        }
+        /*여기까지 헤더*/
+
+        .wrap_profile_content{
+            border: 1px solid #9e9e9e;
+            margin: 50px auto;
+            width: 1200px;
+            height: 200px;
+            position: relative;
+        }
+
+        /*깃발*/
+        .flag{
+            width: 27px; height: 25px;
+            text-align: center;
+            line-height: 25px;
+            position: absolute;
+            left: 5px; top: 0px;
+            color: #fff;
+        }
+        .flag::before{
+            content: "";
+            position: absolute;
+            left: 0; top: 24px;
+        }
+        .flag::after{
+            content: "";
+            position: absolute;
+            right: 0; top: 24px;
+        }
+        .flag_f{
+            background-color: #e65100;
+        }
+        .flag_f::before{
+            border-bottom:15px solid transparent;
+            border-left:15px solid #e65100;
+        }
+        .flag_f::after{
+            border-bottom:15px solid transparent;
+            border-right:15px solid #e65100;
+        }  /*--여기까지 깃발--*/
+
+        .wrap_content img{
+            width: 150px; height: 150px;
+            position: absolute;
+            left: 30px; top: 30px;
+        }
+        /*불투명_검은배경*/
+        .wrap_bg_friend{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0; top: 0;
+            background-color: rgba(117,117,117,0.75);
+            display: none;
+        }
+        .friend_alert{
+            background-color: #fff;
+            width: 300px;
+            height: 130px;
+            position: fixed;
+            left: 50%; top: 50%;
+            margin: -65px 0 0 -150px;
+        }
+        .friend_alert span{
+            width: 205px;
+            height: 25px;
+            font-size: 17px;
+            text-align: center;
+            line-height: 25px;
+            position: absolute;
+            top: 30px; left: 50px;
+        }
+        .friend_alert a{
+            border: none;
+            width: 90px; height: 30px;
+            position: absolute;
+            bottom: 30px;
+            border-radius: 5px;
+            line-height: 30px;
+            font-weight: 300;
+            text-align: center;
+            text-decoration: none;
+        }
+        .friend_alert .friend_cancel{
+            color: #f4f4f4;
+            left: 50px;
+            background-color: #9e9e9e;
+        }
+        .friend_alert .friend_confirm{
+            background-color: #2196F3;
+            right: 50px;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wrap_content">
+    <div id="wrapHeader">
+        <h1>
+            <a href="#">Feria</a>
+        </h1>
+        <div id="wrapMenu">
+            <ul class="wrap_menu">
+                <li><a href="#" class="btn_menu">페리아에 참가하기</a></li>
+                <li><a href="#" class="btn_menu">페리아에 손님 맞이하기</a></li>
+                <li><a href="#" class="btn_menu">페리아</a></li>
+                <li><a href="#" class="btn_menu">비베</a></li>
+                <li><a href="#" class="btn_alarm"><i class="fas fa-bell"></i></a></li>
+                <li><a href="#" class="btn_account"><img src="img/user.png" alt="프로필"><span>MMMMMMMMMM</span></a>
+                    <ul class="account_depth">
+                        <li><a href="#">호스트</a></li>
+                        <li><a href="#">게스트</a></li>
+                        <li><a href="#">설정</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div><!--//wrapHeader end  헤더-->
+
+    <div class="wrap_profile_content">
+        <a href="" class="friend_add"><span class="flag flag_f">F</span></a>
+        <img src="img/user.png" alt="">
+    </div><!--//.profile_content end-->
+</div><!--//.wrap_content end-->
+
+
+<div class="wrap_bg_friend">
+    <div class="friend_alert">
+        <span>친구 신청을 보내시겠습니까?</span>
+        <a href="#" class="friend_cancel">아니요</a>
+        <a href="#" class="friend_confirm">신청</a>
+    </div><!--//.friend_alert end-->
+</div><!--//.wrap_bg_friend end-->
+
+
+
+<script src="js/jquery.js"></script>
+<script>
+    //클릭할때 창 show
+    $('.friend_add').click(function (e) {
+        e.preventDefault();
+        $(".wrap_bg_friend").show();
+    });
+
+    //아니요를 누르면 hide
+    $('.friend_cancel').click(function (e){
+        $(".wrap_bg_friend").hide();
+    });
+</script>
+</body>
+</html>

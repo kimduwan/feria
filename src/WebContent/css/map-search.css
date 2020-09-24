@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+#locationBox {
+    width: 300px;
+    float: left;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+#addressList li {
+    cursor: pointer;
+}
+
+#map {
+    width: 800px;
+    height: 600px;
+}
+
+#pagination {
+    text-align: center;
+    height:30px;
+}
+
+#pagination a {
+    padding: 6px 10px;
+    background: #B39DDB;
+    color: #fff;
+    display: inline-block;
+}
+
+#pagination a:hover {
+    background: #7E57C2;
+}
+
+#pagination a.on {
+    background: #4527A0;
+    cursor: default;
+    text-decoration: none;
+}
+#placesList {
+    height:360px;
+    overflow-y:scroll;
+    margin:10px 0;
+    padding:0;
+}
+
+#placesList .item {
+    position: relative;
+    border-bottom: 1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 45px;
+    line-height: 45px;
+}
+
+#placesList .item h5 {
+    position: absolute;
+    left:50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin:0;
+}
+
+#placesList .item .markerbg {
+    position: absolute;
+    left:5px;
+    top:5px;
+    width: 36px;
+    height: 37px;
+    margin-left:10px;
+    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+
+#placesList .item .marker_1 {
+    background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+    background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+    background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+    background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+    background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+    background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+    background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+    background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+    background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+    background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+    background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+    background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+    background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+    background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+    background-position: 0 -654px;
+}

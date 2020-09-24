@@ -1,0 +1,426 @@
+@charset "UTF-8";
+
+#insertCena {
+    margin: 80px auto;
+    width: 1000px;
+    height: 800px;
+    /*background-color: rgba(240, 248, 255, 0.93);*/
+    position: relative;
+}
+#feria_open{
+    position: absolute;
+    /*background-color: rgba(230, 81, 0, 0.23);*/
+    width: 1000px; height: 50px;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+#feria_open .btn_feria_open{
+    position: absolute;
+    width: 150px; height: 44px;
+    font-size: 22px;
+    background-color: #e65100;
+    top: 0; right: 0;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    padding-top: 1px;
+}
+
+#insertCena .insert_cena_left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 500px;
+    /*background-color: rgba(210, 117, 117, 0.26);*/
+}
+
+.insert_cena_left .title_cena {
+    width: 456px;
+    height: 40px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 22px;
+    padding: 0 10px;
+}
+
+.insert_cena_left.not .title_cena {
+    border: 1.5px solid #e65100;
+    border-radius: 5px;
+}
+
+.insert_cena_left .plus_image_cena {
+    border-radius: 5px;
+    cursor: pointer;
+    width: 480px;
+    height: 480px;
+    background-color: rgb(224, 224, 224);
+    text-align: center;
+    line-height: 480px;
+    font-size: 100px;
+    color: #eee;
+    margin-top: 24px;
+
+}
+
+.insert_cena_left .plus_image_cena #cenaOkImg {
+    width: 480px;
+    height: 480px;
+    border-radius: 5px;
+
+}
+
+.insert_cena_right {
+    width: 500px;
+    position: absolute;
+    left: 500px;
+    top: 0;
+    /*background-color: #CC8EF5;*/
+}
+
+.insert_cena_right .cena_kategorie_food {
+    height: 45px;
+    line-height: 45px;
+    margin-left: 15px;
+}
+
+.insert_cena_right .cena_kategorie_food input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    border-radius: 5px;
+    /*margin-left: 20px;*/
+}
+
+.insert_cena_right .cena_kategorie_food label {
+    background-color: #fff;
+    border: 1px solid #424242;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.insert_cena_right .cena_kategorie_food input:checked + label {
+    color: #fff;
+    border-color: #e65100;
+    background-color: #e65100;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.insert_cena_right .wrap_input_allergy {
+    position: absolute;
+    left: 0;
+    top: 70px;
+    margin: 0;
+}
+
+.insert_cena_right h4 {
+    font-size: 24px;
+    /*margin-left: 20px;*/
+}
+
+.insert_cena_right .host_msg {
+    position: absolute;
+    left: 0;
+    top: 440px;
+
+}
+
+.insert_cena_right #hostMsg {
+    width: 460px;
+    height: 55px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #424242;
+    margin-top: 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+
+    /* textarea 사이즈 조정 불가 */
+    resize: none;
+}
+
+.insert_cena_right .host_msg.not #hostMsg {
+    border: 1.5px solid #e65100;
+}
+
+.insert_cena_bottom {
+    position: absolute;
+    left: 0;
+    top: 600px;
+    width: 1000px;
+    height: 120px;
+    /*background-color: rgba(133, 149, 163, 0.66);*/
+
+}
+
+.insert_cena_bottom h4 {
+    font-size: 22px;
+}
+
+.insert_cena_bottom .kind_cena {
+    /*background-color: #CC8EF5;*/
+    height: 80px;
+    float: left;
+}
+
+.kind_check {
+    display: none;
+}
+
+.insert_cena_bottom .kind_check + label {
+    background-color: #fff;
+    border: 1px solid #424242;
+    padding: 10px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.insert_cena_bottom .kind_check:checked + label {
+    color: #fff;
+    border-color: #e65100;
+    background-color: #e65100;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.insert_cena_bottom .food_tags {
+    float: left;
+    height: 80px;
+    margin-left: 30px;
+
+    /*태그가 너무 길면 생략*/
+    width: 740px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.insert_cena_bottom .food_tags.not #insertTag:first-child {
+    border: 1.5px solid #e65100;
+
+}
+
+.plus_tag_food li {
+    background-color: #fff;
+    margin-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.plus_tag_food li.tag {
+    padding: 10px 12px;
+    border-radius: 100px;
+    border: 1px solid #424242;
+}
+
+.plus_tag_food li.tag button {
+    border: none;
+    background-color: #e65100;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+#insertTag {
+    padding: 8px 10px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    width: 110px;
+    height: 22px;
+    margin-top: 5px;
+    border-radius: 50px;
+    border: 1px solid #424242;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*수정, 삭제 버튼*/
+.btn{
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 80px; height: 40px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    color: #424242;
+    font-size: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    cursor: pointer;
+    padding-bottom: 2px;
+
+}
+.btn.update_btn{
+    position: absolute;
+    right: 85px;
+    background-color: #e65100;
+    color: #fff;
+    border: none;
+}
+
+.btn.update_btn:disabled{
+    background-color: rgba(230, 81, 0, 0.61);
+}
+
+/*등록 버튼*/
+#enrollmentBtn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 40px;
+    background-color: #e65100;
+    font-size: 20px;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+#enrollmentBtn:disabled {
+    background-color: #FFCCBC;
+    box-shadow: none;
+}
+
+/*사진 입력*/
+.plus_image_cena {
+    position: relative;
+    overflow: hidden;
+}
+
+.plus_image_cena img {
+    width: 480px;
+    height: 480px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+
+}
+
+.plus_image_cena.ok img {
+    display: block;
+}
+
+.plus_image_cena .btn_remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    text-shadow: 0 0 2px #424242;
+    cursor: pointer;
+    display: none;
+}
+
+.plus_image_cena.ok .btn_remove {
+    display: block;
+}
+
+.plus_image_cena .btn_remove:hover {
+    background-color: #e65100;
+}
+
+.plus_image_cena #insertCenaImg {
+    display: none;
+}
+
+.plus_image_cena #insertCenaImg + label {
+    width: 480px;
+    height: 480px;
+    font-size: 80px;
+    text-align: center;
+    background-image: url("img/plus.png");
+    border-radius: 5px;
+    display: block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.msg {
+    color: #e65100;
+}
+
+.star {
+    color: #e65100;
+    font-size: 16px;
+    margin-left: 1.2px;
+}
+
+/*세나 삭제 팝업*/
+#wrapPopup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+#popupDeleteCena {
+    background-color: #eeeeee;
+    border: 1px solid #424242;
+    text-align: center;
+    width: 298px;
+    height: 160px;
+    left: 50%;
+    top: 50%;
+    margin: -80px 0 0 -149px;
+    position: absolute;
+}
+
+#popupDeleteCena .popup_delete_cena {
+    /*background-color: aqua;*/
+    margin-top: 50px;
+}
+
+.popup_delete_cena span {
+    /*font-weight: 300;*/
+    /*background-color: #e65100;*/
+}
+
+.popup_delete_cena .btn_delete {
+    /*background-color: #e65100;*/
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+    cursor: pointer;
+}
+
+.popup_delete_cena .btn_delete .delete {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 40px;
+    background-color: rgb(52, 152, 219);
+    border-radius: 5px;
+    border: 0;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.popup_delete_cena .btn_delete .not_delete {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: rgb(224, 224, 224);
+    border: 0;
+}

@@ -1,0 +1,438 @@
+@charset "UTF-8";
+/*2020. 07. 09. Owen*/
+
+/*폰트*/
+body{font-family: 'Noto Sans KR', sans-serif;}
+
+#wrapContentOne{
+    width: 1200px;
+    overflow: auto;
+}
+#wrapContentOne legend{
+    display: none;
+}
+#wrapContentOne h2{
+    font-size: 36px;
+    text-align: center;
+}
+#wrapContentOne h3{
+    margin-top: 5px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    border-bottom: 1px solid #9e9e9e;
+    text-align: center;
+    padding: 10px;
+}
+#wrapContentOne_formBox{
+    position: relative;
+    height: 800px;
+}
+.wrap_half_left{
+    width: 600px;
+    float: left;
+}
+.wrap_half_right{
+    width: 600px;
+    float: left;
+}
+.join h4{
+    width: 100px;
+    display: inline-block;
+}
+#wrapContentOne #wrapContentOne_formBox .join{
+    margin: 10px;
+    width: 600px;
+    height: 50px;
+}
+
+#wrapContentOne #wrapContentOne_formBox .join h4{
+    margin-top: 16px;
+}
+
+.trip{
+    display: none;
+}
+
+.trip+label{
+    border:1px solid #424242;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor: pointer;
+    display:inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.trip+label.msg{
+    border: 2px solid #2196F3;
+}
+.trip:checked+label{
+    background: #E65100;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    color:#fff;
+}
+.trip .friend+label{
+    background: #E65100;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    color:#fff;
+}
+input:focus.ok{
+    outline:1px solid #2196F3;
+}
+
+#wrapContentOne #wrapContentOne_formBox .join_friends_input{
+    display: block;
+    position: relative;
+    overflow: auto;
+    height: 400px;
+    width: 400px;
+    border: 1px solid #9e9e9e;
+    border-radius: 5px;
+}
+
+#wrapContentOne #wrapContentOne_formBox .wrap_result_friends{
+    width: 300px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.join_friends_input h4{
+    display: block;
+    margin: 10px;
+    margin-left: 50px;
+}
+.join_friends_input label{
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+.join_friends_input label img{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+.wrap_input_date{
+    position: relative;
+}
+.wrap_input_date h4{
+    display: inline-block;
+    margin-top: 20px;
+}
+.date{
+    position: absolute;
+    top: 20px;
+    left: 40px;
+}
+.wrap_input_allergy{
+    margin-top: 150px;
+}
+.wrap_input_allergy h4{
+    margin-bottom: 10px;
+}
+.allergy_img{
+    width: 500px;
+    height: 400px;
+    margin-left: 15px;
+}
+.btn_complete{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #E65100;
+    color: #fff;
+    border: 1px solid #fff;
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 15px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+}
+.btn_complete:active{
+    box-shadow: none;
+}
+#wrapProgress{
+    width: 1200px;
+    margin: auto;
+}
+#wrapProgress .wrap_bar ul{
+    margin: auto;
+    width: 880px;
+    height: 30px;
+}
+#wrapProgress .wrap_bar li{
+    float: left;
+    width: 200px;
+    height: 10px;
+    background-color: #9e9e9e;
+    margin: 10px;
+    border-radius: 15px;
+}
+#wrapProgress .wrap_bar li:nth-child(1){
+    background-color: #E65100;
+}
+.input_msg{
+    margin-left: 115px;
+    margin-top: -10px;
+    color: #2196F3;
+    display: none;
+}
+.date_msg{
+    margin-top: 5px;
+    color: #2196F3;
+    display: none;
+}
+.allergy_check{
+    display: none;
+}
+
+.allergy_check+label{
+    border:3px solid #fff;
+    padding:8px 12px;
+    cursor: pointer;
+    display:inline-block;
+    margin:5px 2.5px;
+    width: 73px;
+    height: 105px;
+}
+.allergy_check:checked+label{
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    color:#fff;
+    border: 3px solid #E65100;
+}
+
+#allergy1+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: 0 0;
+}
+#allergy2+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -100px 0;
+}
+#allergy3+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -200px 0;
+}
+#allergy4+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -300px 0;
+}
+#allergy5+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -400px 0;
+}
+#allergy6+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -500px 0;
+}
+#allergy7+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: 0 -126px;
+}
+#allergy8+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -100px -126px;
+}
+#allergy9+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -200px -126px;
+}
+#allergy10+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -300px -126px;
+}
+#allergy11+label{
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -393px -126px;
+}
+#allergy12+label{
+    width: 80px;
+    background-image: url("../img/allergy_sprite.jpg");
+    background-position: -490px -126px;
+}
+
+#wrapPop{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(158,158,158,0.75);
+    display: none;
+    z-index: 1;
+}
+#wrapPop .wrap_pop_map{
+    position: absolute;
+    width: 1300px;
+    height: 800px;
+    left: 50%;
+    top: 50%;
+    margin-top: -400px;
+    margin-left: -650px;
+    border: 5px solid #424242;
+}
+#wrapPop .wrap_pop_map .btn_locate_confirm{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 100px;
+    height: 50px;
+    background-color: #E65100;
+    border: 1px solid #E65100;
+    border-radius: 5px;
+    color: #fff;
+    z-index: 5;
+}
+#wrapPop .wrap_pop_map .btn_locate_close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #9e9e9e;
+    font-size: 35px;
+    z-index: 5;
+}
+
+.wrap_locationBox{
+    background-color: #fff;
+}
+
+#locationBox {
+    position: relative;
+    width: 280px;
+    float: left;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    padding: 10px;
+    z-index: 5;
+    background-color: #ffffff;
+    height: 780px;
+}
+
+#addressList li {
+    cursor: pointer;
+}
+
+#map {
+    width: 1000px;
+    height: 800px;
+    position: absolute;
+    right: 0;
+}
+
+#pagination {
+    text-align: center;
+    height:30px;
+}
+
+#pagination a {
+    padding: 6px 10px;
+    background: #B39DDB;
+    color: #fff;
+    display: inline-block;
+}
+
+#pagination a:hover {
+    background: #7E57C2;
+}
+
+#pagination a.on {
+    background: #4527A0;
+    cursor: default;
+    text-decoration: none;
+}
+#placesList {
+    height:360px;
+    overflow-y:scroll;
+    margin:10px 0;
+    padding:0;
+    z-index: 5;
+}
+
+#placesList .item {
+    position: relative;
+    border-bottom: 1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 45px;
+    line-height: 45px;
+}
+
+#placesList .item h5 {
+    position: absolute;
+    left:50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin:0;
+}
+
+#placesList .item .markerbg {
+    position: absolute;
+    left:5px;
+    top:5px;
+    width: 36px;
+    height: 37px;
+    margin-left:10px;
+    background: url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+}
+
+#placesList .item .marker_1 {
+    background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+    background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+    background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+    background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+    background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+    background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+    background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+    background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+    background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+    background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+    background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+    background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+    background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+    background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+    background-position: 0 -654px;
+}

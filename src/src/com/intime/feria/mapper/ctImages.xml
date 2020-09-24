@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ctImages">
+	<!-- 2020-08-07 장유정 -->
+	<select id="randomCityImg" resultType="CTImage" parameterType="int">
+		SELECT cityImgNo, cityImg, cityNo, imgCnt
+		FROM(SELECT ct.cityimg_no cityImgNo, ct.city_img cityImg, ct.city_no cityNo, ic.imgCount imgCnt
+		FROM ct_images ct,
+		(SELECT COUNT(*) imgCount
+		FROM ct_images) ic, cities c1, cities c2
+		WHERE ct.city_no = #{xxxxxxxxxxxxxxxxxxxxxxxxxx}
+		AND ct.city_no = c2.city_no
+		AND c2.upper_city = c1.city_no
+		ORDER BY DBMS_RANDOM.RANDOM)
+		WHERE rownum BETWEEN 1 AND 2
+	</select>
+	
+	
+	<!-- <select id="randomCityImg" resultType="CTImage" parameterType="int">
+		SELECT cityimg_no cityImgNo, city_img cityImg, city_no cityNo
+		FROM ct_images
+		WHERE cityimg_no = #{cityImgNo}
+	</select> -->
+</mapper>

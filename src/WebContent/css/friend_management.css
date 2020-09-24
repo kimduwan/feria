@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+/*2020.07.06. Kelly*/
+/*2020.07.27. ujeong*/
+
+body, a {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #222;
+}
+
+#wrapContent {
+    /*background-color: aqua;*/
+    width: 1000px;
+    margin: 20px auto 0 auto;
+}
+
+#searchFriend{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+
+    /*background-color: red;*/
+}
+
+#inputAndList{
+    display: inline-block;
+    position: relative;
+
+    vertical-align: middle;
+
+    /*background-color: green;*/
+}
+
+#inputAndList #fmEmailInput{
+    width: 380px;
+    height: 30px;
+    padding: 10px;
+    border: 2px solid #ddd;
+}
+
+#inputAndList #fmEmailInput:focus{
+    outline-color: #E65100;
+}
+
+#itemList{
+    display: inline-block;
+    position: absolute;
+    top: 51px;
+    left: 0;
+    width: 400px;
+    height: 200px;
+    overflow-y: scroll;
+
+    vertical-align: middle;
+    border: 2px solid #ddd;
+    cursor: pointer;
+
+    z-index: 1000;
+
+    background-color: #fff;
+}
+
+#itemList::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+#itemList li {
+    height: 30px;
+    padding: 10px;
+    text-align: left;
+    line-height: 30px;
+    border-bottom: 1px solid #ddd;
+
+}
+
+#itemList li:hover{
+    background-color: #E65100;
+}
+
+#itemList li:last-child{
+    border-bottom: none;
+}
+
+#addFriendBtn{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+
+    margin-left: 30px;
+    vertical-align: middle;
+}
+
+#searchFriend p{
+    width: 500px;
+    margin-left: 280px;
+    font-size: 13px;
+    margin-top: 5px;
+    color: firebrick;
+}
+
+#wrapContent .title_management_friend {
+    text-align: center;
+}
+
+#wrapContent .title_management_friend h2 {
+    font-size: 36px;
+    font-weight: 600;
+    padding: 10px 0 5px 0;
+}
+
+#wrapContent .title_management_friend h3 {
+    font-size: 24px;
+    padding: 10px 0;
+    border-bottom: 1px solid #424242;
+}
+
+.list_friend {
+    /*background-color: #e65100;*/
+    display: inline-block;
+    width: 1000px;
+    margin-left: 100px; /*계산해서 넣음*/
+}
+
+.list_friend h3 {
+    font-size: 24px;
+    margin: 30px 0 25px 45px;
+}
+
+.list_friend img {
+    /*position: absolute;*/
+    /*left: 1px; top: 1px;*/
+    width: 70px;
+    height: 70px;
+    border-right: 1px solid #424242;
+}
+
+.list_friend ul {
+    margin: 20px 45px;
+}
+
+.list_friend ul li {
+    border: 1px solid #424242;
+    width: 400px;
+    height: 70px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.list_friend ul li span {
+    position: absolute;
+    left: 85px;
+    top: 25px;
+    font-size: 18px;
+}
+
+.request_friend {
+    float: left;
+    height: 500px; /*임의로 줌*/
+    width: 500px;
+
+    /*background-color: aliceblue;*/
+}
+
+.request_friend .link_friend_detail{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.friend_btn {
+	display: inline-block;
+	position: absolute;
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 0;
+    cursor: pointer;
+    
+    text-align: center;
+    line-height: 40px;
+    
+}
+
+.request_friend ul li .btn_add_friend {
+    background-color: rgb(33, 150, 243);
+    color: #fff;
+    right: 110px;
+    top: 15px;
+}
+
+.request_friend ul li .btn_not_friend {
+    border: 1px solid #424242;
+    right: 20px;
+    top: 15px;
+}
+
+.friends {
+	position: relative;
+    float: left;
+    height: 500px; /*임의로 줌*/
+    width: 500px;
+    /*box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);*/
+}
+
+.friends button {
+    
+}
+
+.friends .btn_delete_friend{
+	position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    top: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: #424242;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+}
+
+/*.friends .wrap_move_friend_detail {
+    !*background-color: #e65100;*!
+    width: 200px;
+    height: 70px;
+    position: absolute;
+}*/
+
+.friends .move_friend_detail {
+    display: block;
+    height: 70px;
+    /*background-color: #e65100;*/
+}
+
+
+/*친구 삭제 팝업*/
+#wrapPopup {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+#popupDeleteFriend {
+    background-color: #eeeeee;
+    border: 1px solid #424242;
+    text-align: center;
+    width: 298px;
+    height: 160px;
+    left: 50%;
+    top: 50%;
+    margin: -80px 0 0 -149px;
+    position: absolute;
+}
+
+#popupDeleteFriend .popup_delete_friend {
+    /*background-color: aqua;*/
+    margin-top: 50px;
+}
+
+.popup_delete_friend span {
+    /*font-weight: 300;*/
+    /*background-color: #e65100;*/
+}
+
+.popup_delete_friend .btn_delete {
+    /*background-color: #e65100;*/
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+    cursor: pointer;
+}
+
+.popup_delete_friend .btn_delete .delete {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 40px;
+    background-color: rgb(52, 152, 219);
+    border-radius: 5px;
+    border: 0;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.popup_delete_friend .btn_delete .not_delete {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: rgb(224, 224, 224);
+    border: 0;
+}
+
+.paginate .screen_out {
+	padding:0;
+	border:none;
+}

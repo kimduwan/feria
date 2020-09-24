@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="fDates">
+
+	<select id="selectList" resultType="FDate"
+		parameterType="PageVO">
+		SELECT fdateNo, feriaName, hostName, profileImg,
+		cenaType, r
+		FROM (SELECT fd.fdate_no fDateNo, f.feria_name feriaName,
+		rownum r,
+		u.last_name||u.first_name hostName, u.profile_img profileImg,
+		c.cena_type cenaType
+		FROM f_dates fd, ferias f, users u, cenas c
+		WHERE
+		fd.feria_no
+		= f.feria_no AND f.user_no = u.user_no AND
+		f.user_no =
+		c.user_no AND f.cena_no = c.cena_no AND fd.feria_confirm = 'O'
+		ORDER BY
+		fd.fdate_no DESC)
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+
+	<!-- 0808 김우석 수정 -->
+	<!-- 페리아에 대한 추억나누기 에 나열될 사진들 -->
+	<select id="selectFdateImg" parameterType="int"
+		resultType="FDate">
+		select u.user_no guestNo, u.last_name||''||u.first_name
+		guestName,t.fr_no frNo,t.fdate_no fDateNo,t.fimg fImg
+		from(
+		select
+		fi.fr_no fr_no,fd.fdate_no fdate_no,fi.fimg fimg,fr.user_no user_no
+		from f_dates fd,f_reviews fr,f_images fi
+		where fd.fdate_no=fr.fdate_no
+		and fr.fr_no=fi.fr_no and
+		fr.fdate_no=#{fDateNo}) t,users u
+		where
+		u.user_no=t.user_no
+	</select>
+
+	<!-- /*페리아 상세 페이지 이동*/ -->
+	<select id="selectOne" parameterType="int" resultType="FDate">
+		select
+		fd.fdate_no fDateNo, f.feria_name feriaName, fd.feria_date feriaDate
+		from f_dates fd,ferias f
+		where fd.fdate_no=#{fDateNo} and
+		fd.feria_no=f.feria_no
+	</select>
+
+	<!-- /*feria_detail.jsp 에 상단에 페리아에 게스트들이 들고온 비베 리스트들*/ -->
+	<select id="selectBibeList" parameterType="int"
+		resultType="FDate">
+		select t.user_no guestNo,t.user_name
+		guestName,t.profile_img guestProfileImg,t.bibe_name
+		bibeName,t.bibe_img bibeImg,t.bibe_no bibeNo
+		from(
+		select ph.prtc_no prtc_no, u.user_no user_no,u.last_name || u.first_name
+		user_name, u.profile_img profile_img,b.bibe_img bibe_img,b.bibe_name
+		bibe_name,b.bibe_no bibe_no
+		from users u, p_heads ph, u_bibes ub, bibes b
+		where u.user_no=ph.user_no and ph.prtc_cnt_no=ub.prtc_cnt_no
+		and ub.bibe_no=b.bibe_no) t, f_participations fp, f_dates fd
+		where
+		t.prtc_no=fp.prtc_no and fd.fdate_no=fp.fdate_no and
+		fd.fdate_no=#{fDateNo}
+	</select>
+
+	<!-- /*리뷰작성하기 자격여부 & 블랙리스트 추가자격 (페리아 주최여부)*/ -->
+	<select id="selectHost" parameterType="int" resultType="int">
+		select
+		f.user_no
+		from f_dates fd, ferias f
+		where fd.feria_no=f.feria_no and
+		fd.fdate_no=#{fDateNo}
+	</select>
+
+	<!-- 리뷰작성하기 자격여부 & 블랙리스트 추가자격(참가했던 인원여부) -->
+	<select id="selectOkToReview" parameterType="FDate"
+		resultType="int">
+		select count(*)
+		from f_participations fp, f_dates fd,p_heads
+		ph,users u
+		where fp.fdate_no=fd.fdate_no and fp.prtc_no=ph.prtc_no and
+		ph.user_no=u.user_no
+		and u.user_no=#{guestNo} and
+		fd.fdate_no=#{fDateNo}
+	</select>
+	<!-- 신고 주체 회원이 신고 대상 회원을 신고 했었는지 여부 : 신고했으면 1, 신고한 적 없으면 : 0 -->
+	<select id="selectAddBlackList" parameterType="Black"
+		resultType="int">
+		select count(*)
+		from blacklist
+		where user_no=#{userNo} and
+		user_no2=#{userNo2}
+	</select>
+
+	<!-- 2020.08.14 김우석 추가 -->
+	<insert id="insertBlackList" parameterType="Black">
+		insert into
+		blacklist(black_no,user_no,user_no2,black_regdate)
+		values(blacklist_seq.nextval,#{userNo},#{userNo2},systimestamp)
+	</insert>
+	<!-- reservation_feria.jsp 페이지에 필요한 비베 정보들 -->
+	<select id="selectBibeDetailList" parameterType="int"
+		resultType="FDate">
+		select t.user_no guestNo,t.profile_img
+		guestProfileImg,t.bibe_name bibeName,
+		t.bibe_img bibeImg,t.bibe_no bibeNo,t.btype_name bTypeName,t.bibe_ml
+		bibeMl,t.bibe_cnt bibeCnt
+		from(
+		select ph.prtc_no prtc_no, u.user_no user_no, u.profile_img profile_img
+		,b.bibe_img bibe_img,b.bibe_name bibe_name,b.bibe_no bibe_no,
+		bt.btype_name btype_name,ubs.bibe_cnt bibe_cnt,tmp.bibe_ml bibe_ml
+		from users u, p_heads ph, u_bibes ub, bibes b, b_types bt,u_bibes ubs,
+		(select bd.bibe_no bibe_no,bm.bibe_ml bibe_ml
+		from b_details bd,b_mlprice bm
+		where bd.bibe_no=bm.bibe_no
+		)tmp
+		where u.user_no=ph.user_no
+		and ph.prtc_cnt_no=ub.prtc_cnt_no
+		and ub.bibe_no=b.bibe_no
+		and bt.btype_no=b.btype_no
+		and ubs.prtc_cnt_no=ph.prtc_cnt_no
+		and b.bibe_no=tmp.bibe_no
+		) t, f_participations fp, f_dates fd
+		where
+		t.prtc_no=fp.prtc_no and fd.fdate_no=fp.fdate_no and
+		fd.fdate_no=#{fDateNo}
+	</select>
+	<!-- reservation_feria.jsp 페이지에 필요한 페리아 정보들 -->
+	<select id="selectOneDetail" parameterType="int"
+		resultType="FDate">
+		select fd.fdate_no fDateNo, f.feria_name feriaName,
+		fd.feria_date feriaDate,f.meal_type mealType, f.feria_address
+		feriaAddress,f.lat lat,f.lng lng
+		from f_dates fd,ferias f
+		where
+		fd.fdate_no=#{fDateNo} and fd.feria_no=f.feria_no
+	</select>
+
+
+
+	<!-- 2020.08.11 이원희 -->
+	<!-- fdates 인서트 구문 -->
+	<insert id="insert" parameterType="FDate">
+		INSERT INTO
+		F_DATES(fdate_no,feria_date,feria_no)
+		VALUES(f_dates_seq.nextval,#{feriaDate},#{feriaNo})
+	</insert>
+
+	<!-- 20-08-12 조현득 -->
+	<select id="selectBobList" resultType="FDate"
+		parameterType="PageVO">
+		SELECT fDateNo, feriaName, hostName, profileImg,
+		cenaType, count, r
+		FROM(SELECT fDateNo, feriaName, hostName,
+		profileImg, cenaType, count, rownum r
+		FROM(SELECT fd.fdate_no fDateNo, f.feria_name feriaName, l.type_no,
+		NVL(l.count,0) count,
+		u.last_name||u.first_name hostName, u.profile_img profileImg,
+		c.cena_type cenaType
+		FROM f_dates fd, ferias f, users u, cenas c,
+		(SELECT type_no, count(*) count
+		FROM likes
+		WHERE likes_type = 'F'
+		GROUP BY type_no) l
+		WHERE fd.feria_no = f.feria_no AND f.user_no = u.user_no
+		AND
+		f.user_no = c.user_no AND f.cena_no = c.cena_no AND fd.feria_confirm = 'O' AND
+		l.type_no(+) = fd.fdate_no AND c.cena_type='B'
+		ORDER BY l.count DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+
+
+	<select id="selectSulList" resultType="FDate"
+		parameterType="PageVO">
+		SELECT fDateNo, feriaName, hostName, profileImg,
+		cenaType, count, r
+		FROM(SELECT fDateNo, feriaName, hostName,
+		profileImg, cenaType, count, rownum r
+		FROM(SELECT fd.fdate_no fDateNo, f.feria_name feriaName, l.type_no,
+		NVL(l.count,0) count,
+		u.last_name||u.first_name hostName, u.profile_img profileImg,
+		c.cena_type cenaType
+		FROM f_dates fd, ferias f, users u, cenas c,
+		(SELECT type_no, count(*) count
+		FROM likes
+		WHERE likes_type = 'F'
+		GROUP BY type_no) l
+		WHERE fd.feria_no = f.feria_no AND f.user_no = u.user_no
+		AND
+		f.user_no = c.user_no AND f.cena_no = c.cena_no AND fd.feria_confirm = 'O' AND
+		l.type_no(+) = fd.fdate_no AND c.cena_type='B'
+		ORDER BY l.count DESC))
+		WHERE r BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="selectFeriaCommTotal" resultType="int">
+		SELECT COUNT(fdate_no)
+		FROM f_dates
+		WHERE feria_confirm = 'O'
+		AND TO_CHAR(sysdate,'YYYYMMDD') > TO_CHAR(feria_date,'YYYYMMDD')
+	</select>
+
+</mapper>
