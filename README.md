@@ -13,6 +13,7 @@
 
  **개발목표**
 - 새로운 개념의 여행 서비스 고안- 파티 참가인원 매칭 기능 제공- 사용자가 즐길 수 있는 커뮤니티 기능- 일종의 위키피디아(술에 특화된 UCC 사전)
+
 **개발환경**
 - OS : window 7- Development Tool : Ecliplse, WebStorm, Apache-Tomcat, Sql Developer- Framework : Spring, mybatis- Language/Skills : HTML5, CSS, Java Script, JAVA, SQL, JSP &amp; Servlet,jQuery- DB : Quantum DB
 
